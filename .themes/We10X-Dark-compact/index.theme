@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=We10X-Dark-compact
+Comment=An Materia Gtk+ theme based on Elegant Design
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=We10X-Dark-compact
+MetacityTheme=We10X-Dark-compact
+IconTheme=We10X-Dark
+CursorTheme=We10X-Dark
+ButtonLayout=close,minimize,maximize:menu
