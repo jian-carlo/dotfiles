@@ -1,6 +1,9 @@
 local keymap = vim.keymap.set
 vim.g.mapleader = " "
 
+keymap({ "n", "v" }, "<leader>y", '"+y')
+keymap({ "n", "v" }, "<leader>p", '"+p')
+
 keymap("n", "<leader>f", ":Explore<CR>")
 keymap("n", "<leader>0", ":Explore ~/.config/nvim<CR>cd")
 keymap("n", "<leader>1", ":Explore ~/projects/thermo-problem-set/<CR>cd")
@@ -15,8 +18,8 @@ keymap("n", "<C-u>", "<C-u>zz")
 keymap("n", "n", "nzzzv")
 keymap("n", "N", "Nzzzv")
 
+keymap("v", "J", ":m '>+1<CR>gv=gv")
 keymap("v", "K", ":m '<-2<CR>gv=gv")
-keymap("v", "J", ":m '<+1<CR>gv=gv")
 
 keymap("x", "p", function()
 	return 'pgv"' .. vim.v.register .. "y"

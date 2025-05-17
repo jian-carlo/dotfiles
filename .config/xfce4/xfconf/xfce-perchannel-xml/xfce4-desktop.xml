@@ -3,7 +3,7 @@
 <channel name="xfce4-desktop" version="1.0">
   <property name="last-settings-migration-version" type="uint" value="1"/>
   <property name="desktop-icons" type="empty">
-    <property name="style" type="int" value="1"/>
+    <property name="style" type="int" value="2"/>
   </property>
   <property name="last" type="empty">
     <property name="window-width" type="int" value="704"/>

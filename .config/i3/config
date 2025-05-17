@@ -96,9 +96,9 @@ bindsym $mod+plus split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+S layout stacking
+bindsym $mod+W layout tabbed
+bindsym $mod+E layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -189,4 +189,4 @@ bar {
         status_command i3status
 }
 
-exec --no-startup-id "feh --bg-scale ~/personal/dotfiles/.wallpapers/nord/ign_unsplash44.png"
+exec --no-startup-id feh --bg-scale ~/personal/dotfiles/.wallpapers/nordic/ign_unsplash44.png

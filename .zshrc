@@ -61,8 +61,10 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='ls --color'
-# alias vim='nvim'
+alias vim='nvim'
 alias c='clear'
+alias py="python"
+alias xfce="xfce4-termux"
 
 # Shell integrations
 # eval "$(fzf --zsh)"

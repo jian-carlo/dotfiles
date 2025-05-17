@@ -15,11 +15,13 @@ opt.backup = false
 opt.undofile = true
 opt.laststatus = 3
 opt.showtabline = 0
-vim.cmd("set mouse=")
 opt.wrap = false
-opt.cmdheight = 0
+opt.cmdheight = 1
 opt.updatetime = 300
 opt.timeoutlen = 500
+opt.scrolloff = 12
+opt.foldlevel = 3
+vim.cmd("set mouse=")
 vim.cmd([[
 if has('termguicolors')
     set termguicolors

@@ -19,10 +19,10 @@ end
 return {
 
 	s(
-		{ trig = "pu", snippetType = "autosnippet", regTrig = true, wordTrig = false, condition = math },
+		{ trig = "pu", snippetType = "autosnippet", regTrig = true, wordTrig = false, condition = math, priority = 100 },
 		fmta(
 			[[
-    <>\unit{<>}<>
+    <>\unit{<>}
     ]],
 			{
 				f(function(_, snip)
@@ -41,7 +41,21 @@ return {
 					end
 				end),
 				i(1),
-				i(0),
+			}
+		)
+	),
+
+	s(
+		{ trig = "([%d])pu", snippetType = "autosnippet", regTrig = true, wordTrig = false, priority = 99 },
+		fmta(
+			[[
+    <>~\unit{<>}
+    ]],
+			{
+				f(function(_, snip)
+					return snip.captures[1]
+				end),
+				i(1),
 			}
 		)
 	),
