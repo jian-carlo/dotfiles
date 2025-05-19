@@ -9,8 +9,8 @@ keymap("n", "<leader>0", ":Explore ~/.config/nvim<CR>cd")
 keymap("n", "<leader>1", ":Explore ~/projects/thermo-problem-set/<CR>cd")
 keymap("n", "<leader>2", ":Explore ~/projects/obsidian_vault/<CR>cd")
 
-keymap("n", "<C-t>", ":enew<CR>")
-keymap("n", "<C-w>", ":bd!<CR>")
+-- keymap("n", "<C-t>", ":enew<CR>")
+-- keymap("n", "<C-w>", ":bd!<CR>")
 
 keymap("n", "J", "mzJ`z")
 keymap("n", "<C-d>", "<C-d>zz")
@@ -47,3 +47,23 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
 	end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		-- vim.opt_local.wrap = true
+		-- vim.opt_local.linebreak = true
+		-- vim.opt_local.textwidth = 80
+		-- vim.opt_local.breakindent = true
+		keymap("n", "j", "gj")
+		keymap("n", "k", "gk")
+		keymap("n", "$", "g$")
+		keymap("n", "^", "g^")
+		keymap("n", "mvt", ":Markview toggle<CR>")
+	end,
+})
+
+keymap("n", "<leader>d", function()
+	local date = os.date("%Y-%m-%d")
+	vim.api.nvim_put({ date }, "c", true, true)
+end)

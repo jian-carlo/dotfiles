@@ -21,6 +21,7 @@ opt.updatetime = 300
 opt.timeoutlen = 500
 opt.scrolloff = 12
 opt.foldlevel = 3
+opt.conceallevel = 2
 vim.cmd("set mouse=")
 vim.cmd([[
 if has('termguicolors')

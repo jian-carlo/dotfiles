@@ -1,39 +1,29 @@
 return {
-	{
-		"nvim-neorg/neorg",
-		lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-		version = "*", -- Pin Neorg to the latest stable release
-		config = function()
-			require("neorg").setup({
-				load = {
-					["core.defaults"] = {},
-					["core.concealer"] = {
-						icon_preset = "diamond",
-					},
-					["core.esupports.metagen"] = {
-						author = "jian",
-					},
-					["core.dirman"] = {
-						config = {
-							workspaces = {
-								college = "~/personal/notes/college",
-								research = "~/personal/notes/research",
-							},
-							index = "index.norg", -- The name of the main (root) .norg file
+	"nvim-neorg/neorg",
+	lazy = false,
+	version = "*",
+	config = function()
+		require("neorg").setup({
+			load = {
+				["core.defaults"] = {
+					config = {
+						disable = {
+							"core.iter",
 						},
 					},
-					["core.summary"] = {},
-					["core.qol.toc"] = {
-						close_after_use = true,
+				},
+				["core.dirman"] = {
+					config = {
+						workspaces = {
+							college = "~/personal/notes/college/",
+							research = "~/personal/notes/research/",
+						},
+						index = "index.norg",
+						use_popup = false,
 					},
 				},
-			})
-			-- vim.api.nvim_create_autocmd("Filetype", {
-			--     pattern = "norg",
-			--     callback = function()
-			--         vim.keymap.set("n", "my-key-here", "<Plug>(neorg.pivot.list.toggle)", { buffer = true })
-			--     end,
-			-- })
-		end,
-	},
+				["core.concealer"] = {},
+			},
+		})
+	end,
 }

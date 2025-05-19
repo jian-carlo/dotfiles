@@ -61,10 +61,13 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='ls --color'
-alias vim='nvim'
+alias nvim='nvim .'
+alias vim='nvim .'
 alias c='clear'
 alias py="python"
 alias xfce="xfce4-termux"
+alias bg="feh --bg-center ~/personal/dotfiles/.wallpapers/gruvbox/mix/night_moon.png"
+alias ss="xfce4-screenshooter"
 
 # Shell integrations
 # eval "$(fzf --zsh)"
@@ -83,6 +86,7 @@ export PATH="$HOME/local/bin/:$PATH"
 # export PATH="$PATH:/mnt/c/Windows/"
 export EDITOR=nvim
 export VISUAL=nvim
+export MANPAGER="nvim + Man!" man man
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

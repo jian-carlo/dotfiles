@@ -1,12 +1,28 @@
 return {
 	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		event = "VeryLazy",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-		---@module 'render-markdown'
-		---@type render.md.UserConfig
+		"OXY2DEV/markview.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		lazy = false,
 		config = function()
-			require("render-markdown").setup({})
+			require("markview").setup({
+				markdown = {
+					block_quotes = {
+						enable = false,
+					},
+					headings = {
+						enable = true,
+						shift_width = true,
+						org_indent = true,
+						org_indent_wrap = true,
+					},
+				},
+			})
+		end,
+	},
+	{
+		"andrewferrier/wrapping.nvim",
+		config = function()
+			require("wrapping").setup()
 		end,
 	},
 }
