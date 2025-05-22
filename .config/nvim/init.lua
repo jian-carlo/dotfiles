@@ -1,6 +1,10 @@
-require("jian.key")
-require("jian.set")
-require("jian.lazy")
-require("jian.netrw")
-require("jian.lsp")
-require("jian.color")
+vim.cmd.colorscheme("nordstone")
+
+vim.loader.enable()
+
+require("neovim.key")
+require("neovim.status")
+require("neovim.opt")
+require("neovim.lazy")
+require("neovim.netrw")
+require("neovim.lsp")

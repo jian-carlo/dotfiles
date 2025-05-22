@@ -27,6 +27,7 @@ return {
 			set("n", "<leader>sgf", ":FzfLua git_files<CR>")
 			set("n", "<leader>so", ":FzfLua oldfiles<CR>")
 			set("n", "<leader>sr", ":FzfLua resume<CR>")
+			set("n", "<leader>sq", ":FzfLua quickfix<CR>")
 			set("n", "<leader>sgg", function()
 				require("fzf-lua").grep({
 					prompt = "First grep> ",
