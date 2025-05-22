@@ -16,7 +16,7 @@ return {
          vim.keymap.set({ "i" }, "<C-j>", function()
              ls.expand()
          end, { silent = true })
-         vim.keymap.set({ "i", "s" }, "jk", function()
+         vim.keymap.set({ "i", "s" }, "<Tab>", function()
              ls.jump(1)
          end, { silent = true })
          vim.keymap.set({ "i", "s" }, "<C-k>", function()
@@ -36,4 +36,3 @@ return {
          end, { silent = true })
      end,
 }
-

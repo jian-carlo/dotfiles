@@ -45,9 +45,6 @@ local on_attach = function(client, bufnr)
 	nmap("<leader>ca", vim.lsp.buf.code_action, "Code Action") -- Show code actions
 	nmap("<leader>ds", vim.lsp.buf.document_symbol, "Document Symbols") -- Document symbols
 	nmap("<leader>ws", vim.lsp.buf.workspace_symbol, "Workspace Symbols") -- Workspace symbols
-	--    nmap("<leader>cf", function()
-	-- 	vim.lsp.buf.format({ async = true })
-	-- end, "Format Code") -- Format code
 
 	-- Diagnostics navigation
 	nmap("[d", vim.diagnostic.goto_prev, "Go to Previous Diagnostic") -- Previous diagnostic
