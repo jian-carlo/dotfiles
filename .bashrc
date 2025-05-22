@@ -1,5 +1,0 @@
-export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:$HOME/lua-language-server/bin"
-export PATH="$PATH:$HOME/xdotool"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$HOME/../usr/share/texlive/2025/texmf-dist/tex/latex"

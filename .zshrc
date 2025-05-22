@@ -61,8 +61,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='ls --color'
-alias nvim='nvim .'
-alias vim='nvim .'
+alias vim='nvim'
 alias c='clear'
 alias py="python"
 alias xfce="xfce4-termux"
@@ -78,12 +77,13 @@ bindkey -s ^f "tmux-sessionizer\n"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PATH="$HOME/.local/scripts:$PATH"
-export PATH="$HOME/../usr/share/texlive/2025/texmf-dist/tex/latex:$PATH"
+# export PATH="$HOME/../usr/share/texlive/2025/texmf-dist/tex/latex:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/local/bin/:$PATH"
-# export PATH="$PATH:/mnt/c/Windows/"
+export PATH="/snap/bin:$PATH"
+export PATH="$PATH:/mnt/c/Windows/"
 export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER="nvim + Man!" man man
