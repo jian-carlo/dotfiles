@@ -1,8 +1,10 @@
 return {
-  "folke/snacks.nvim",
-  keys = {
-    { "<leader>sf", function() Snacks.picker.smart() end },
+	"folke/snacks.nvim",
+	keys = {
+    -- stylua: ignore start
+    { "<leader>sf", function() Snacks.picker.files() end },
     { "<leader>sb", function() Snacks.picker.buffers() end },
+    { "<leader>sw", function() Snacks.picker.lines() end },
     { "<leader>sg", function() Snacks.picker.grep() end },
     { "<leader>sr", function() Snacks.picker.resume() end },
     { "<leader>sq", function() Snacks.picker.qflist() end },
@@ -14,11 +16,12 @@ return {
     { "<leader>si", function() Snacks.picker.icons() end },
     { "<leader>sl", function() Snacks.picker.lazy() end },
     { "<leader>se", function() Snacks.explorer() end },
-  },
+		-- stylua: ignore end
+	},
 
-    lazy = false,
-    enabled = not vim.g.vscode,
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-    },
+	lazy = false,
+	enabled = not vim.g.vscode,
+	dependencies = {
+		{ "nvim-lua/plenary.nvim" },
+	},
 }

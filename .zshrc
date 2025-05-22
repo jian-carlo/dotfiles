@@ -68,6 +68,12 @@ alias py="python"
 alias xfce="xfce4-termux"
 alias bg="feh --bg-center ~/personal/dotfiles/.wallpapers/gruvbox/mix/night_moon.png"
 alias ss="xfce4-screenshooter"
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gps="git push"
+alias gpl="git pull"
+alias gf="git fetch"
 
 # Shell integrations
 # eval "$(fzf --zsh)"

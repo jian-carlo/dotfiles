@@ -291,7 +291,7 @@ function _G.status_line()
 	local components = {
 		hl,
 		c_mode(),
-		c_project(),
+		-- c_project(),
 		c_filename(),
 		-- c_copilot_chat(),
 		c_search_count(),
