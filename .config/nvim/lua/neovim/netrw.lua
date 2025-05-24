@@ -4,7 +4,7 @@ vim.g.netrw_liststyle = 0
 
 local function open_netrw_dir_in_explorer()
 	local current_dir = vim.fn.expand("%:p:h")
-	vim.fn.system("explorer.exe " .. current_dir)
+	vim.fn.system("thunar " .. current_dir)
 end
 
 vim.api.nvim_create_autocmd("FileType", {

@@ -2,7 +2,7 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	opts = function()
 		return {
-			auto_install = true, -- Auto-install languages that are not installed
+			-- auto_install = true, -- Auto-install languages that are not installed
 			-- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
 			ensure_installed = {
 				"bash",

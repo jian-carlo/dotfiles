@@ -1,7 +1,7 @@
 <?xml version="1.1" encoding="UTF-8"?>
 
 <channel name="xfce4-terminal" version="1.0">
-  <property name="font-use-system" type="bool" value="true"/>
+  <property name="font-use-system" type="bool" value="false"/>
   <property name="color-foreground" type="string" value="#DCD7BA"/>
   <property name="color-background" type="string" value="#000000"/>
   <property name="color-background-vary" type="bool" value="false"/>
@@ -21,6 +21,9 @@
   <property name="misc-maximize-default" type="bool" value="false"/>
   <property name="misc-menubar-default" type="bool" value="false"/>
   <property name="misc-borders-default" type="bool" value="false"/>
-  <property name="font-allow-bold" type="bool" value="false"/>
+  <property name="font-allow-bold" type="bool" value="true"/>
   <property name="scrolling-on-keystroke" type="bool" value="false"/>
+  <property name="scrolling-on-output" type="bool" value="false"/>
+  <property name="kinetic-scrolling" type="bool" value="false"/>
+  <property name="font-name" type="string" value="IosevkaTerm Nerd Font Mono Italic 12"/>
 </channel>

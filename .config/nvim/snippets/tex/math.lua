@@ -57,7 +57,7 @@ return {
 		{ trig = "mk", snippetType = "autosnippet", wordTrig = true },
 		fmta(
 			[[
-    $<>$<>
+    \(<>\)<>
     ]],
 			{
 				d(1, get_visual),
@@ -67,17 +67,17 @@ return {
 	),
 
 	-- ARROW
-	s(
-		{ trig = "->", snippetType = "autosnippet", condition = math, wordTrig = false },
-		fmta(
-			[[
-    \to
-    ]],
-			{
-				-- nodes
-			}
-		)
-	),
+	-- s(
+	-- 	{ trig = "->", snippetType = "autosnippet", condition = math, wordTrig = false },
+	-- 	fmta(
+	-- 		[[
+	--    \to
+	--    ]],
+	-- 		{
+	-- 			-- nodes
+	-- 		}
+	-- 	)
+	-- ),
 
 	-- DOT
 	postfix({ trig = "dot", snippetType = "autosnippet", condition = math, wordTrig = false }, {
