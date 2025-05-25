@@ -16,6 +16,7 @@ return {
     { "<leader>si", function() Snacks.picker.icons() end },
     { "<leader>sl", function() Snacks.picker.lazy() end },
     { "<leader>se", function() Snacks.explorer() end },
+    { "<leader>z", function() Snacks.zen() end },
 		-- stylua: ignore end
 	},
 
