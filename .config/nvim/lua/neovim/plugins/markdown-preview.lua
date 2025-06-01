@@ -10,5 +10,6 @@ return {
 		vim.g.mkdp_browser = "firefox"
 		vim.g.mkdp_auto_start = 1
 		vim.g.mkdp_auto_close = 1
+		vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<cr>")
 	end,
 }

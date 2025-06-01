@@ -30,3 +30,5 @@ compinit
 _comp_options+=(globdots)
 # End of lines added by compinstall
 PROMPT+='%% '
+
+setopt globdots
