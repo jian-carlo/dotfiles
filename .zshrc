@@ -22,6 +22,12 @@ alias v="nvim"
 alias c="clear"
 alias py="python"
 alias xfce="startxfce4.sh"
+alias gp="git push"
+alias gu="git pull"
+alias gs="git status"
+alias gl="git log --pretty=format:"%H %an %ad" --date=short"
+alias ga="git add"
+alias gc="git commit"
 
 
 autoload -Uz compinit
