@@ -25,7 +25,7 @@ alias xfce="startxfce4.sh"
 alias gp="git push"
 alias gu="git pull"
 alias gs="git status"
-alias gl="git log --pretty=format:"%h %an %ad" --date=short"
+alias gl='git log --pretty=format:"%h %ad   %s" --date=short | grep -Ev "modified:|deleted:|new file:" | less -S'
 alias ga="git add"
 alias gc="git commit"
 
