@@ -189,4 +189,18 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        position top
+        workspace_buttons yes
+        colors {
+          background  #000000
+          statusline  #e0def4
+          separator   #66666
+
+          focused_workspace   #ebbcba #ebbcba #575279
+          active_workspace    #31748f #31748f #e0def4
+          inactive_workspace  #31748f #31748f #e0def4
+        }
 }
+# <colorclass>    <border>  <background>  <text>   <indicator> <child_border>
+client.focused    #908caa   #908caa       #000000  #908caa     #908caa
+client.unfocused  #26233a   #26233a       #e0def4  #26233a     #26233a
