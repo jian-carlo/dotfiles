@@ -16,6 +16,9 @@ k("n", "N", "Nzzzv")
 k("v", "J", ":m '>+1<CR>gv=gv")
 k("v", "K", ":m '<-2<CR>gv=gv")
 
+k("v", ">", ">gv")
+k("v", "<", "<gv")
+
 k("n", "<leader>td", function()
 	if vim.diagnostic.is_enabled() then
 		return vim.diagnostic.enable(false, {})

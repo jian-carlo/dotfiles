@@ -59,6 +59,7 @@ bindsym $mod+q kill
 # A more modern dmenu replacement is rofi:
 bindsym $mod+d exec "rofi -modi drun,run -show drun"
 bindsym $mod+p exec "rofi -modi drun,run -show window"
+bindsym Ctrl+s exec "xfce4-screenshooter"
 
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
