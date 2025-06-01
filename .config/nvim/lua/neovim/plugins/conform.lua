@@ -7,7 +7,6 @@ return {
 			formatters_by_ft = {
 				tex = { "tex-fmt" },
 				lua = { "stylua" },
-				-- markdown = { "prettierd" },
 				python = { "black" },
 			},
 		})

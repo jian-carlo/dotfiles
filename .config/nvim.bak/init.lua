@@ -1,6 +1,0 @@
-require("jian.key")
-require("jian.set")
-require("jian.lazy")
-require("jian.netrw")
-require("jian.lsp")
-require("jian.color")

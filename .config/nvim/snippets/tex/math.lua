@@ -1,7 +1,7 @@
-local get_visual = function(args, parent)
+local get_visual = function()
 	if #parent.snippet.env.LS_SELECT_RAW > 0 then
 		return sn(nil, i(1, parent.snippet.env.LS_SELECT_RAW))
-	else -- If LS_SELECT_RAW is empty, return a blank insert node
+	else
 		return sn(nil, i(1))
 	end
 end
@@ -10,204 +10,121 @@ local function math()
 	return vim.api.nvim_eval("vimtex#syntax#in_mathzone()") == 1
 end
 
+-- stylua: ignore start
 return {
-
-	-- FRACTION
 	s(
-		{ trig = "ff", snippetType = "autosnippet", condition = math, wordTrig = false },
+		{
+			trig = "ff",
+			snippetType = "autosnippet",
+			condition = math,
+      wordTrig = true,
+		},
 		fmta(
 			[[
-    \frac{<>}{<>}
-    ]],
+      \frac{<>}{<>}
+      ]],
 			{
 				i(1, "num"),
 				i(2, "den"),
 			}
 		)
 	),
-
-	-- MULTIPLY CROSS
 	s(
-		{ trig = "xx", snippetType = "autosnippet", condition = math, wordTrig = false },
+		{
+			trig = "^^",
+			snippetType = "autosnippet",
+			condition = math,
+		},
 		fmta(
 			[[
-    \times
-    ]],
-			{
-				-- nodes
-			}
-		)
-	),
-
-	-- MULTIPLY DOT
-	s(
-		{ trig = "**", snippetType = "autosnippet", condition = math, wordTrig = false },
-		fmta(
-			[[
-    \cdot
-    ]],
-			{
-				-- nodes
-			}
-		)
-	),
-
-	-- INLINE MATH
-	s(
-		{ trig = "mk", snippetType = "autosnippet", wordTrig = true },
-		fmta(
-			[[
-    \(<>\)<>
-    ]],
+      ^{<>}
+      ]],
 			{
 				d(1, get_visual),
-				i(0),
 			}
 		)
 	),
-
-	-- ARROW
-	-- s(
-	-- 	{ trig = "->", snippetType = "autosnippet", condition = math, wordTrig = false },
-	-- 	fmta(
-	-- 		[[
-	--    \to
-	--    ]],
-	-- 		{
-	-- 			-- nodes
-	-- 		}
-	-- 	)
-	-- ),
-
-	-- DOT
-	postfix({ trig = "dot", snippetType = "autosnippet", condition = math, wordTrig = false }, {
-		f(function(_, parent)
-			return "\\dot{" .. parent.snippet.env.POSTFIX_MATCH .. "}"
-		end, {}),
-	}),
-
-	-- HAT
-	postfix({ trig = "hat", snippetType = "autosnippet", condition = math, wordTrig = false }, {
-		f(function(_, parent)
-			return "\\hat{" .. parent.snippet.env.POSTFIX_MATCH .. "}"
-		end, {}),
-	}),
-
-	-- BOXED
 	s(
-		{ trig = "box", snippetType = "autosnippet", condition = math, wordTrig = false, priority = 1 },
+		{
+			trig = "__",
+			snippetType = "autosnippet",
+			condition = math,
+		},
 		fmta(
 			[[
-    \<>{<>}
-    ]],
-			{
-				c(1, { t("boxed"), t("Aboxed") }),
-				d(2, get_visual),
-			}
-		)
-	),
-
-	s(
-		{ trig = "__", snippetType = "autosnippet", condition = math, wordTrig = false },
-		fmta(
-			[[
-    _{<>}
-    ]],
-			{
-				i(1),
-			}
-		)
-	),
-
-	s(
-		{ trig = "^^", snippetType = "autosnippet", condition = math, wordTrig = false },
-		fmta(
-			[[
-    ^{<>}
-    ]],
-			{
-				i(1),
-			}
-		)
-	),
-
-	s(
-		{ trig = "sum", snippetType = "autosnippet", condition = math, wordTrig = false },
-		fmta(
-			[[
-        \sum_{<>}^{<>}
-        ]],
-			{
-				i(1),
-				i(2),
-			}
-		)
-	),
-
-	s(
-		{ trig = "chm", snippetType = "autosnippet", condition = math, wordTrig = false },
-		fmta(
-			[[
-      \ce{<>}
+      _{<>}
       ]],
 			{
-				i(1),
+				d(1, get_visual),
 			}
 		)
 	),
-
-	-- s(
-	-- 	{ trig = "mbox", snippetType = "snippet", condition = nil, wordTrig = false, priority = 2 },
-	-- 	fmta(
-	-- 		[[
-	--      \begin{empheq}[box=\widefbox]{gather*}
-	--        <>
-	--      \end{empheq}
-	--      ]],
-	-- 		{
-	-- 			d(1, get_visual),
-	-- 		}
-	-- 	)
-	-- ),
-
-	s(
-		{ trig = "par", snippetType = "autosnippet", condition = math, wordTrig = false },
-		fmta(
-			[[
-        \frac{\partial <>}{\partial <>}
-        ]],
-			{
-				i(1),
-				i(2),
-			}
-		)
-	),
-
-	s(
-		{ trig = "int", snippetType = "autosnippet", condition = math, wordTrig = false, priority = 1 },
-		fmta(
-			[[
-        \int <> \, d<>
-        ]],
-			{
-				i(1),
-				i(2),
-			}
-		)
-	),
-
-	s(
-		{ trig = "dint", snippetType = "autosnippet", condition = math, wordTrig = false, priority = 2 },
-		fmta(
-			[[
+  s(
+    {
+      trig = "int",
+      snippetType = "snippet",
+      condition = math,
+    },
+    fmta(
+      [[
       \int_{<>}^{<>} <> \, d<>
       ]],
-			{
-				i(1),
-				i(2),
-				i(3),
-				i(4),
-			}
-		)
-	),
+      {
+        i(1, "9"),
+        i(2, "x"),
+        i(3, "f(x)"),
+        i(4, "x")
+      }
+    )
+  ),
+  s(
+    {
+      trig = "par",
+      snippetType = "snippet",
+      condition = nil,
+    },
+    fmta(
+      [[
+        \left(\frac{\partial <>}{\partial <>}\right)_{<>}
+      ]],
+      {
+        i(1, "z"),
+        i(2, "x"),
+        i(3, "y"),
+      }
+    )
+  ),
+  s(
+    {
+      trig = "mbox",
+      snippetType = "autosnippet",
+      condition = math,
+    },
+    fmta(
+      [[
+        \begin{empheq}[box=\widefbox]{gather*}
+          <>
+        \end{empheq}
+      ]],
+      {
+        d(1, get_visual)
+      }
+    )
+  ),
+  s(
+    {
+      trig = "mk",
+      snippetType = "autosnippet",
+      condition = nil,
+    },
+    fmta(
+      [[
+        \(<>\)
+      ]],
+      {
+        i(1)
+      }
+    )
+  ),
 }
+-- stylua: ignore end

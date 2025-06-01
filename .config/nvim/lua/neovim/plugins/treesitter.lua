@@ -41,10 +41,4 @@ return {
 	main = "nvim-treesitter.configs",
 	build = ":TSUpdate",
 	event = "BufReadPost",
-	dependencies = {
-		{ -- Syntax aware text objects.
-			-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
-	},
 }

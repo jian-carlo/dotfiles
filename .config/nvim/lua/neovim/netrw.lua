@@ -10,19 +10,11 @@ end
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "netrw",
 	callback = function()
-		vim.keymap.set("n", "o", open_netrw_dir_in_explorer, { buffer = true, silent = true })
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "netrw",
-	callback = function()
 		local bind = function(lhs, rhs)
 			vim.keymap.set("n", lhs, rhs, { remap = true, buffer = true })
 		end
 
-		bind("a", "%")
-		bind("r", "R")
+    bind("o", open_netrw_dir_in_explorer)
 		bind("l", "<CR>")
 		bind("h", "-")
 	end,

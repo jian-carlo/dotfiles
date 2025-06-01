@@ -15,7 +15,7 @@ vim.keymap.set("n", "<leader>k", function()
 end, { desc = "toggle virtual line diagnostics" })
 
 -- blink.cmp
-local gapabilities = {
+local capabilities = {
 	textDocument = {
 		foldingRange = {
 			dynamicRegistration = false,
