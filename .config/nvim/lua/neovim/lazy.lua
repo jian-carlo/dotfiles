@@ -21,10 +21,6 @@ require("lazy").setup({
 		{ import = "neovim.plugins" },
 	},
 	install = { colorscheme = { "default" } },
-	checker = {
-		enabled = true,
-		notify = false,
-	},
 	ui = {
 		border = "rounded",
 	},

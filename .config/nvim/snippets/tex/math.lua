@@ -1,10 +1,10 @@
-local get_visual = function()
-	if #parent.snippet.env.LS_SELECT_RAW > 0 then
-		return sn(nil, i(1, parent.snippet.env.LS_SELECT_RAW))
-	else
-		return sn(nil, i(1))
-	end
-end
+-- local get_visual = function()
+-- 	if #parent.snippet.env.LS_SELECT_RAW > 0 then
+-- 		return sn(nil, i(1, parent.snippet.env.LS_SELECT_RAW))
+-- 	else
+-- 		return sn(nil, i(1))
+-- 	end
+-- end
 
 local function math()
 	return vim.api.nvim_eval("vimtex#syntax#in_mathzone()") == 1
@@ -34,13 +34,14 @@ return {
 			trig = "^^",
 			snippetType = "autosnippet",
 			condition = math,
+      wordTrig = false,
 		},
 		fmta(
 			[[
       ^{<>}
       ]],
 			{
-				d(1, get_visual),
+        i(1)
 			}
 		)
 	),
@@ -49,13 +50,14 @@ return {
 			trig = "__",
 			snippetType = "autosnippet",
 			condition = math,
+      wordTrig = false
 		},
 		fmta(
 			[[
       _{<>}
       ]],
 			{
-				d(1, get_visual),
+        i(1)
 			}
 		)
 	),
@@ -107,7 +109,7 @@ return {
         \end{empheq}
       ]],
       {
-        d(1, get_visual)
+        i(1)
       }
     )
   ),
@@ -120,6 +122,37 @@ return {
     fmta(
       [[
         \(<>\)
+      ]],
+      {
+        i(1)
+      }
+    )
+  ),
+  s(
+    {
+      trig = "cee",
+      snippetType = "autosnippet",
+      condition = math,
+      wordTrig = false
+    },
+    fmta(
+      [[
+        \ce{<>}
+      ]],
+      {
+        i(1)
+      }
+    )
+  ),
+  s(
+    {
+      trig = 'm"',
+      snippetType = "autosnippet",
+      condition = math,
+    },
+    fmta(
+      [[
+        \intertext{<>}
       ]],
       {
         i(1)

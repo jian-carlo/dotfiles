@@ -15,14 +15,14 @@ return {
 		-- k("n", "<leader>sp", ":Telescope builtin<CR>")
 		require("telescope").setup({
 			pickers = {
-				find_files = { theme = "dropdown", hidden = true },
-				live_grep = { theme = "dropdown" },
-				buffers = { theme = "dropdown" },
-				help_tags = { theme = "dropdown" },
-				resume = { theme = "dropdown" },
-				oldfiles = { theme = "dropdown" },
-				quickfix = { theme = "dropdown" },
-				builtin = { theme = "dropdown" },
+				find_files = { theme = "ivy", hidden = true },
+				live_grep = { theme = "ivy" },
+				buffers = { theme = "ivy" },
+				help_tags = { theme = "ivy" },
+				resume = { theme = "ivy" },
+				oldfiles = { theme = "ivy" },
+				quickfix = { theme = "ivy" },
+				builtin = { theme = "ivy" },
 			},
 		})
 	end,
