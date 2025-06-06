@@ -34,6 +34,7 @@ alias gs="git status"
 alias gl='git log --pretty=format:"%h %ad   %s" --date=short | grep -Ev "modified:|deleted:|new file:" | less -S'
 alias ga="git add"
 alias gc="git commit"
+alias q="exit"
 
 
 autoload -Uz compinit
