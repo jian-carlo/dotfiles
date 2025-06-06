@@ -1,12 +1,13 @@
+HISTFILE=~/.local/share/zsh/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+
 export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 plugins=(git)
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 source $ZSH/oh-my-zsh.sh
-
-HISTFILE=~/.local/share/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
 
 bindkey -v
 bindkey -s ^f "tmux-sessionizer.sh\n"
@@ -17,6 +18,11 @@ export PATH="$PATH:$HOME/.local/scripts"
 export PATH="$PATH:$HOME/.cargo/bin"
 export EDITOR=nvim
 export FZF_DEFAULT_OPTS="--margin 10% --color=bw"
+export WGETRC="~/.config/wget/wgetrc"
+export NPM_CONFIG_USERCONFIG="~/.config/npm/npmrc"
+export GIT_CONFIG="~/.config/git/gitconfig"
+export TMUX_CONF="~/.config/tmux/tmux.conf"
+export ICEauthority="~/.local/share"
 
 alias v="nvim"
 alias c="clear"
@@ -32,7 +38,7 @@ alias gc="git commit"
 
 autoload -Uz compinit
 zmodload zsh/complist
-compinit
+compinit -d ~/.local/share/zsh/.zcompdump
 _comp_options+=(globdots)
 # End of lines added by compinstall
 PROMPT+='%% '
