@@ -53,7 +53,7 @@ return {
 			default = { "lsp", "path", "snippets", "buffer" },
 		},
 		fuzzy = { implementation = "prefer_rust_with_warning" },
-		snippets = { preset = "luasnip" },
+		-- snippets = { preset = "luasnip" },
 	},
 	opts_extend = { "sources.default" },
 }
