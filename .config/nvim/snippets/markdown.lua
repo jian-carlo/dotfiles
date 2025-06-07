@@ -132,7 +132,7 @@ return {
       ]],
       {
         i(1, "text"),
-        i(2, "file"),
+        rep(1, "file"),
       }
     )
   ),
