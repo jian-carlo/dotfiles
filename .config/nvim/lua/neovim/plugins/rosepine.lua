@@ -2,17 +2,55 @@ return {
 	"rose-pine/neovim",
 	name = "rose-pine",
 	config = function()
+		require("rose-pine").setup({
+			variant = "auto", -- auto, main, moon, or dawn
+			dark_variant = "main", -- main, moon, or dawn
+			dim_inactive_windows = false,
+			extend_background_behind_borders = false,
+
+			enable = {
+				terminal = true,
+				legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+				migrations = true, -- Handle deprecated options automatically
+			},
+
+			styles = {
+				bold = true,
+				italic = true,
+				transparency = false,
+			},
+
+			groups = {
+				border = "muted",
+				link = "iris",
+				panel = "surface",
+
+				error = "love",
+				hint = "iris",
+				info = "foam",
+				note = "pine",
+				todo = "rose",
+				warn = "gold",
+
+				git_add = "foam",
+				git_change = "rose",
+				git_delete = "love",
+				git_dirty = "rose",
+				git_ignore = "muted",
+				git_merge = "iris",
+				git_rename = "pine",
+				git_stage = "iris",
+				git_text = "rose",
+				git_untracked = "subtle",
+
+				h1 = "iris",
+				h2 = "foam",
+				h3 = "rose",
+				h4 = "gold",
+				h5 = "pine",
+				h6 = "foam",
+			},
+		})
 		vim.cmd.colorscheme("rose-pine")
-		vim.cmd("highlight Normal guibg=none")
-		vim.cmd("highlight NormalNC guibg=none")
-		vim.cmd("highlight NormalFloat guibg=none")
-		vim.cmd("highlight Float guibg=none")
-		vim.cmd("highlight FloatBackground guibg=none")
-		vim.cmd("highlight FloatBorder guibg=none")
-		vim.cmd("highlight FloatShadow guibg=none")
-		vim.cmd("highlight Pmenu guibg=none")
-		vim.cmd("highlight PmenuSel guibg=none")
-		vim.cmd("highlight PmenuThumb guibg=none")
-		vim.cmd("highlight PmenuBar guibg=none")
 	end,
 }
