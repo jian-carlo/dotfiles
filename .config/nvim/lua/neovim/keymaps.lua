@@ -55,6 +55,12 @@ k("n", "<leader>dt", function()
 	vim.api.nvim_put({ date }, "c", true, true)
 end)
 
+k("n", "<leader>tn", function()
+	local time_in_seconds = os.time()
+	local formatted_time = "__(" .. os.date("%H:%M", time_in_seconds) .. ")__"
+	vim.api.nvim_put({ formatted_time }, "c", true, true)
+end)
+
 k("x", "p", function()
 	return 'pgv"' .. vim.v.register .. "y"
 end, { remap = false, expr = true })
