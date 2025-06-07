@@ -11,8 +11,8 @@ return {
       ]])
 			vim.keymap.set("n", "<leader>wi", ":WikiIndex<CR>", opts)
 			vim.keymap.set("n", "<leader>wo", ":WikiOpen<CR>", opts)
-			vim.keymap.set("n", "<leader>]", ":WikiLinkNext<CR>", opts)
-			vim.keymap.set("n", "<leader>[", ":WikiLinkPrev<CR>", opts)
+			vim.keymap.set("n", "<A-]>", ":WikiLinkNext<CR>", opts)
+			vim.keymap.set("n", "<A-[>", ":WikiLinkPrev<CR>", opts)
 			vim.keymap.set("n", "<leader>wj", ":WikiJournal<CR>", opts)
 		end,
 	},

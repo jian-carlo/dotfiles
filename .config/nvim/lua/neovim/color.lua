@@ -1,3 +1,10 @@
+-- Define the syntax pattern for `#tag` in Markdown
+vim.cmd([[
+  augroup MarkdownTagHighlight
+    autocmd!
+    autocmd FileType markdown syntax match MarkdownTag /#\w\+/
+  augroup END
+]])
 vim.keymap.set("n", "<leader>vc", function()
 	local line = vim.fn.line(".")
 	local col = vim.fn.col(".")
@@ -34,6 +41,7 @@ local function rosepine()
 		vim.cmd("highlight texMathDelimZoneTD guifg=#eb6f92")
 		vim.cmd("highlight texMathDelimZoneTI guifg=#eb6f92")
 		vim.cmd("highlight texPartArgTitle guifg=#f6c177")
+		vim.cmd("highlight MarkdownTag guifg=#f6c177")
 
 		vim.cmd("highlight Normal guibg=#000000")
 		vim.cmd("highlight NormalNC guibg=#000000")
@@ -65,6 +73,7 @@ local function rosepine()
 		vim.cmd("highlight texMathDelimZoneTD guifg=#d35470")
 		vim.cmd("highlight texMathDelimZoneTI guifg=#d35470")
 		vim.cmd("highlight texPartArgTitle guifg=#d28c45")
+		vim.cmd("highlight MarkdownTag guifg=#d28c45")
 
 		vim.cmd("highlight Normal guibg=#ffffff")
 		vim.cmd("highlight NormalNC guibg=#ffffff")
@@ -99,3 +108,11 @@ vim.keymap.set("n", "<leader>ct", function()
 		vim.o.background = "light"
 	end
 end, { desc = "Toggle background between dark and light" })
+
+-- Define the syntax pattern for `#tag` in Markdown
+vim.cmd([[
+  augroup MarkdownTagHighlight
+    autocmd!
+    autocmd FileType markdown syntax match MarkdownTag /#\w\+/
+  augroup END
+]])
