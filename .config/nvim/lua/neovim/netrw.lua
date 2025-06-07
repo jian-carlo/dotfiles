@@ -1,6 +1,7 @@
 vim.g.netrw_keepdir = 1
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 0
+vim.g.netrw_list_hide = 1
 
 local function open_netrw_dir_in_explorer()
 	local current_dir = vim.fn.expand("%:p:h")
@@ -14,7 +15,7 @@ vim.api.nvim_create_autocmd("FileType", {
 			vim.keymap.set("n", lhs, rhs, { remap = true, buffer = true })
 		end
 
-    bind("o", open_netrw_dir_in_explorer)
+		bind("o", open_netrw_dir_in_explorer)
 		bind("l", "<CR>")
 		bind("h", "-")
 	end,

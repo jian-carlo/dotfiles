@@ -50,16 +50,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function()
-		k("n", "j", "gj")
-		k("n", "k", "gk")
-		k("n", "$", "g$")
-		k("n", "^", "g^")
-	end,
-})
-
 k("n", "<leader>dt", function()
 	local date = os.date("%Y-%m-%d")
 	vim.api.nvim_put({ date }, "c", true, true)

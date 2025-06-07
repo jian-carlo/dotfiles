@@ -65,3 +65,11 @@ o.swapfile = false -- Stop creating swp files.
 o.conceallevel = 0 -- Text is shown normally.
 o.signcolumn = "yes" -- Always showed to prevent the screen from jumping.
 o.viewoptions = "cursor,folds" -- Save cursor position and folds.
+
+vim.cmd([[let g:markdown_syntax_conceal = 0]])
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		vim.cmd("set conceallevel=2")
+	end,
+})

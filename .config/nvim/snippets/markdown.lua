@@ -39,7 +39,7 @@ return {
   s(
     {
       trig = "ff",
-      snippetType = "autosnippet",
+      snippetType = "snippet",
       condition = nil,
       wordTrig = true
     },
@@ -56,7 +56,7 @@ return {
   s(
     {
       trig = "dm",
-      snippetType = "autosnippet",
+      snippetType = "snippet",
       condition = line_begin,
       wordTrig = true
     },
@@ -74,7 +74,7 @@ return {
   s(
     {
       trig = "beg",
-      snippetType = "autosnippet",
+      snippetType = "snippet",
       condition = line_begin,
       wordTrig = true
     },
@@ -92,7 +92,7 @@ return {
   s(
     {
       trig = "mk",
-      snippetType = "autosnippet",
+      snippetType = "snippet",
       condition = nil,
       wordTrig = true
     },
@@ -117,6 +117,22 @@ return {
       ]],
       {
         d(1, get_visual)
+      }
+    )
+  ),
+  s(
+    {
+      trig = "ln",
+      snippetType = "snippet",
+      condition = nil,
+    },
+    fmta(
+      [[
+        [<>](<>)
+      ]],
+      {
+        i(1, "text"),
+        i(2, "file"),
       }
     )
   ),
