@@ -1,11 +1,13 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	event = "VimEnter",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
 		},
+		{ "nvim-telescope/telescope-ui-select.nvim" },
 	},
 	config = function()
 		local k = vim.keymap.set
@@ -17,6 +19,9 @@ return {
 		k("n", "<leader>so", ":Telescope oldfiles<CR>")
 		k("n", "<leader>sq", ":Telescope quickfix<CR>")
 		k("n", "<leader>sk", ":Telescope keymaps<CR>")
+		k("n", "<leader>sn", function()
+			builtin.find_files({ cwd = vim.fn.stdpath("config") })
+		end, { desc = "[S]earch [N]eovim files" })
 		require("telescope").setup({
 			pickers = {
 				find_files = { theme = "ivy", hidden = true },

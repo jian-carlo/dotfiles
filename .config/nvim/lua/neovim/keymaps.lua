@@ -1,23 +1,24 @@
 local k = vim.keymap.set
+local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 
-k({ "n", "v" }, "<leader>y", '"+y')
-k({ "n", "v" }, "<leader>p", '"+p')
+k({ "n", "v" }, "<leader>y", '"+y', opts)
+k({ "n", "v" }, "<leader>p", '"+p', opts)
 
-k("n", "<leader>f", ":Explore<CR>")
-k("n", "<leader>0", ":Explore ~/.config/nvim<CR>cd")
+k("n", "<leader>f", ":Explore<CR>", opts)
+k("n", "<leader>0", ":Explore ~/.config/nvim<CR>cd", opts)
 
-k("n", "J", "mzJ`z")
-k("n", "<C-d>", "<C-d>zz")
-k("n", "<C-u>", "<C-u>zz")
-k("n", "n", "nzzzv")
-k("n", "N", "Nzzzv")
+k("n", "J", "mzJ`z", opts)
+k("n", "<C-d>", "<C-d>zz", opts)
+k("n", "<C-u>", "<C-u>zz", opts)
+k("n", "n", "nzzzv", opts)
+k("n", "N", "Nzzzv", opts)
 
-k("v", "J", ":m '>+1<CR>gv=gv")
-k("v", "K", ":m '<-2<CR>gv=gv")
+k("v", "J", ":m '>+1<CR>gv=gv", opts)
+k("v", "K", ":m '<-2<CR>gv=gv", opts)
 
-k("v", ">", ">gv")
-k("v", "<", "<gv")
+k("v", ">", ">gv", opts)
+k("v", "<", "<gv", opts)
 
 k("n", "<leader>td", function()
 	if vim.diagnostic.is_enabled() then
@@ -53,13 +54,13 @@ vim.api.nvim_create_autocmd("FileType", {
 k("n", "<leader>dt", function()
 	local date = os.date("%Y-%m-%d")
 	vim.api.nvim_put({ date }, "c", true, true)
-end)
+end, opts)
 
 k("n", "<leader>tn", function()
 	local time_in_seconds = os.time()
 	local formatted_time = "__(" .. os.date("%H:%M", time_in_seconds) .. ")__"
 	vim.api.nvim_put({ formatted_time }, "c", true, true)
-end)
+end, opts)
 
 k("x", "p", function()
 	return 'pgv"' .. vim.v.register .. "y"

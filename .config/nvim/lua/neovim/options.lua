@@ -43,7 +43,7 @@ o.shortmess:append({ -- Don't show messages:
 	s = true, -- Search hit BOTTOM/TOP messages.
 })
 o.showcmd = false -- Do not show command on last line.
-o.showmode = false -- Do not show mode on last line.
+o.showmode = true -- Do not show mode on last line.
 o.complete = ".,]" -- How keyword completion works.
 o.completeopt = "menu,menuone,noinsert,preview" -- Disable native autocompletion (using nvim-cmp).
 o.pumblend = 5 -- Opaque completion menu background.
@@ -71,5 +71,15 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
 	callback = function()
 		vim.cmd("set conceallevel=2")
+	end,
+})
+
+o.guicursor = ""
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.hl.on_yank()
 	end,
 })

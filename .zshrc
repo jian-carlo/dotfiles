@@ -18,11 +18,6 @@ export PATH="$PATH:$HOME/.local/scripts"
 export PATH="$PATH:$HOME/.cargo/bin"
 export EDITOR=nvim
 export FZF_DEFAULT_OPTS="--margin 10% --color=bw"
-export WGETRC="~/.config/wget/wgetrc"
-export NPM_CONFIG_USERCONFIG="~/.config/npm/npmrc"
-export GIT_CONFIG="~/.config/git/gitconfig"
-export TMUX_CONF="~/.config/tmux/tmux.conf"
-export ICEauthority="~/.local/share"
 
 alias v="nvim"
 alias c="clear"
