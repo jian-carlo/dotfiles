@@ -70,7 +70,7 @@ vim.cmd([[let g:markdown_syntax_conceal = 0]])
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
 	callback = function()
-		vim.cmd("set conceallevel=2")
+		vim.cmd("ListsEnable")
 	end,
 })
 
