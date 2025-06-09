@@ -50,8 +50,8 @@ tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal --zoom=4
-bindsym $mod+n exec xfce4-terminal --zoom=4 --working-directory='~/storage/shared/personal/wiki' -e "nvim -c 'set bg=light | WikiIndex'"
-bindsym $mod+m exec xfce4-terminal --zoom=4 --working-directory='~/storage/shared/personal/wiki' -e "nvim -c 'set bg=light | WikiJournal'"
+bindsym $mod+n exec xfce4-terminal --zoom=4 -e "tmux new-session -s wiki -c ~/storage/shared/personal/wiki/ nvim +WikiIndex +ChangeTheme"
+bindsym $mod+m exec xfce4-terminal --zoom=4 -e "tmux new-session -s journal -c ~/storage/shared/personal/wiki/ nvim +WikiJournal +ChangeTheme"
 
 # kill focused window
 bindsym $mod+q kill

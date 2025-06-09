@@ -67,12 +67,12 @@ o.signcolumn = "yes" -- Always showed to prevent the screen from jumping.
 o.viewoptions = "cursor,folds" -- Save cursor position and folds.
 
 vim.cmd([[let g:markdown_syntax_conceal = 0]])
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function()
-		vim.cmd("ListsEnable")
-	end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "markdown",
+-- 	callback = function()
+-- 		vim.cmd("ListsEnable")
+-- 	end,
+-- })
 
 o.guicursor = ""
 
@@ -81,5 +81,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
 		vim.hl.on_yank()
+	end,
+})
+
+vim.api.nvim_create_autocmd("VimLeave", {
+	callback = function()
+		os.execute("tmux source-file ~/.home/dotfiles/.config/tmux/.tmux-dark.conf")
 	end,
 })

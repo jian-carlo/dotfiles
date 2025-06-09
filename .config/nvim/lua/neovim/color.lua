@@ -101,13 +101,24 @@ vim.api.nvim_create_autocmd("OptionSet", {
 -- Call initially to set up highlighting
 rosepine()
 
-vim.keymap.set("n", "<leader>ct", function()
+local change_theme = function()
 	if vim.o.background == "light" then
+		vim.cmd("silent ! tmux source-file ~/.home/dotfiles/.config/tmux/.tmux-dark.conf")
 		vim.o.background = "dark"
 	elseif vim.o.background == "dark" then
+		vim.cmd("silent ! tmux source-file ~/.home/dotfiles/.config/tmux/.tmux-light.conf")
 		vim.o.background = "light"
 	end
-end, { desc = "Toggle background between dark and light" })
+end
+
+vim.api.nvim_create_user_command("ChangeTheme", change_theme, {})
+
+vim.keymap.set(
+	"n",
+	"<leader>tt",
+	change_theme,
+	{ desc = "Toggle background between dark and light", silent = true, noremap = true }
+)
 
 -- Define the syntax pattern for `#tag` in Markdown
 vim.cmd([[

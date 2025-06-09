@@ -30,7 +30,15 @@ alias gl='git log --pretty=format:"%h %ad   %s" --date=short | grep -Ev "modifie
 alias ga="git add"
 alias gc="git commit"
 alias q="exit"
-
+tmux_source() {
+  tmux source-file ~/.home/dotfiles/.config/tmux/tmux.conf
+}
+tmux_dark() {
+  tmux source-file ~/.home/dotfiles/.config/tmux/.tmux-dark.conf
+}
+tmux_light() {
+  tmux source-file ~/.home/dotfiles/.config/tmux/.tmux-light.conf
+}
 
 autoload -Uz compinit
 zmodload zsh/complist
