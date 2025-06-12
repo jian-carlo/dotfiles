@@ -13,15 +13,15 @@ return {
 
 		require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/snippets" } })
 
-		vim.keymap.set({ "i" }, "<C-i>", function()
+		vim.keymap.set({ "i" }, "<C-h>", function()
 			ls.expand()
-		end, { silent = true })
+		end, { noremap = true, silent = true, desc = "expand snippet" })
 		vim.keymap.set({ "i", "s" }, "<C-j>", function()
 			ls.jump(1)
-		end, { silent = true })
+		end, { silent = true, desc = "jump forward snippet" })
 		vim.keymap.set({ "i", "s" }, "<C-k>", function()
 			ls.jump(-1)
-		end, { silent = true })
+		end, { silent = true, desc = "jump backward snippet" })
 
 		vim.keymap.set("n", "<leader>rs", function()
 			require("luasnip").cleanup()

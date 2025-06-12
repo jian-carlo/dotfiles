@@ -1,6 +1,4 @@
--- Load lazy package manager.
--- https://github.com/folke/lazy.nvim
-
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -15,17 +13,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		os.exit(1)
 	end
 end
-
--- Add lazy to the `runtimepath`, this allows us to `require` it.
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("neovim.plugins", {
-	change_detection = {
-		enabled = false,
-		notify = false,
+-- Setup lazy.nvim
+require("lazy").setup({
+	spec = {
+		{ import = "neovim.plugins" },
 	},
-	import = "neovim.plugins",
-	install = { colorscheme = { "nordstone" } },
+	install = { colorscheme = { "default" } },
 	ui = {
 		border = "rounded",
 	},

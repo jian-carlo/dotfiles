@@ -7,8 +7,7 @@ return {
 			formatters_by_ft = {
 				tex = { "tex-fmt" },
 				lua = { "stylua" },
-				-- markdown = { "prettierd" },
-				python = { "black" },
+				-- python = { "black" },
 			},
 		})
 		vim.api.nvim_create_autocmd("BufWritePre", {

@@ -1,3 +1,11 @@
+-- Define a custom highlight group for MarkdownTags
+-- You can customize the foreground (fg) and background (bg) colors,
+-- as well as other attributes like bold, italic, underline.
+vim.api.nvim_set_hl(0, "MarkdownTag", { fg = "#7C3AED", bold = true, italic = true }) -- A purple color
+
+-- Link your custom Treesitter capture group to the highlight group
+-- This is often done in your nvim-treesitter setup
+
 return {
 	"nvim-treesitter/nvim-treesitter",
 	opts = function()
@@ -16,21 +24,17 @@ return {
 				"lua",
 				"luadoc",
 				"markdown",
+				"markdown_inline",
 				"powershell",
 				"python",
 				"vim",
 			},
 			highlight = {
 				enable = true,
-				disable = function(_, buf)
-					local max_filesize = 1024 * 1024 -- 1 Mb threshold
-					local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-					if ok and stats and stats.size > max_filesize then
-						return true
-					end
-
-					return false
-				end,
+				custom_captures = {
+					["MarkdownTags"] = "MarkdownTag",
+				},
+				additional_vim_regex_highlighting = { "ruby", "markdown" },
 			},
 			indent = {
 				enable = true,
@@ -40,11 +44,5 @@ return {
 
 	main = "nvim-treesitter.configs",
 	build = ":TSUpdate",
-	event = "BufReadPost",
-	dependencies = {
-		{ -- Syntax aware text objects.
-			-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
-	},
+	-- event = "BufReadPost",
 }
