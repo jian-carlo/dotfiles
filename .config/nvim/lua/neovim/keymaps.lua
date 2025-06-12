@@ -52,13 +52,13 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 k("n", "<leader>dt", function()
-	local date = os.date("%Y-%m-%d")
+	local date = os.date("%Y-%m-%d %A")
 	vim.api.nvim_put({ date }, "c", true, true)
 end, opts)
 
 k("n", "<leader>tn", function()
 	local time_in_seconds = os.time()
-	local formatted_time = "__(" .. os.date("%H:%M", time_in_seconds) .. ")__"
+	local formatted_time = "## (" .. os.date("%H:%M", time_in_seconds) .. ")"
 	vim.api.nvim_put({ formatted_time }, "c", true, true)
 end, opts)
 
