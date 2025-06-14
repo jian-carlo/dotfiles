@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
    selected=$1
 else
-    selected=$(find ~/personal -mindepth 1 -maxdepth 1 | \
+    selected=$(find ~/personal ~/storage/shared/personal/ -mindepth 1 -maxdepth 1 | \
         sed "s|^$HOME/||" | \
         fzf --color=bg+:-1,gutter:-1 --no-preview
     )
