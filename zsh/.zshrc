@@ -40,10 +40,21 @@ bindkey "^P" history-search-backward
 bindkey "^R" fzf-history-widget
 bindkey -s "^f" "tmux-sessionizer.sh\n"
 
+# prompt with git info
 autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' formats '%b%m%u%c '
+zstyle ':vcs_info:git:*' stagedstr '+'
+zstyle ':vcs_info:git:*' unstagedstr '!'
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
++vi-git-untracked() {
+  if [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == 'true' ]] \
+     && git status --porcelain | grep -q '^??'; then
+    hook_com[misc]='?'
+  fi
+}
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%b '
-
 PROMPT='%F{blue}%n%f %F{cyan}${PWD/#$HOME/~}%f %F{yellow}${vcs_info_msg_0_}%f%# '
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -175,7 +175,7 @@ local function open_file_picker_with_buffer_preview(files, cwd)
 			attach_mappings = function(prompt_bufnr, map)
 				actions.select_default:replace(function()
 					actions.close(prompt_bufnr)
-					local sel = action_state.get_selected_entry()
+					local sel = state.get_selected_entry()
 					vim.cmd("edit " .. sel.value)
 				end)
 				return true
