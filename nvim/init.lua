@@ -1,0 +1,5 @@
+require("nvim.native")
+require("nvim.lazy")
+require("nvim.lsp")
+require("nvim.colors")
+require("nvim.pickers")

@@ -1,0 +1,16 @@
+export PATH=""
+export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/usr/sbin"
+export PATH="$PATH:/usr/bin"
+export PATH="$PATH:/sbin"
+export PATH="$PATH:/bin"
+export PATH="$PATH:/usr/games"
+export PATH="$PATH:/usr/local/games"
+export PATH="$PATH:/usr/lib/wsl/lib"
+export PATH="$PATH:$XDG_DATA_HOME/cargo/bin"
+export PATH="$PATH:$XDG_CONFIG_HOME/scripts"
+export PATH="$PATH:/mnt/c/Program Files/Google/Chrome/Application"
+export PATH="$PATH:/mnt/c/Windows/System32"
+
+export LANG=en_US.UTF-8
