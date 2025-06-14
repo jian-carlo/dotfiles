@@ -1,6 +1,6 @@
 # Install
 ```bash
-yes | pacman -S neovim tmux fzf ripgrep stow git openssh rust python3 ipython sudo
+yes | pkg install neovim tmux fzf ripgrep stow git openssh rust python
 ```
 # Stow
 ```bash

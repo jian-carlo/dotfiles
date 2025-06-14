@@ -2,7 +2,7 @@ local o = vim.opt
 local g = vim.g
 local k = vim.keymap.set
 local opts = function(desc)
-	return { noremap = true, silent = true, desc = desc }
+	return { silent = true, desc = desc }
 end
 
 -- {{{ options
@@ -91,12 +91,12 @@ k("n", "<esc>", "<cmd>nohl<cr>", opts("erase search highlights"))
 k("n", "<leader>9", "<cmd>Ex $XDG_CONFIG_HOME/nvim/snippets<CR>", opts("open snippets directory"))
 k("n", "<leader>0", "<cmd>Ex $XDG_CONFIG_HOME/nvim<CR>", opts("open config directory"))
 
-k("i", "<C-A-d>", function()
+k("n", "<leader>22", function()
 	local date = os.date("%Y-%m-%d %A")
 	vim.api.nvim_put({ date }, "c", true, true)
 end, opts("date today"))
 
-k("i", "<C-A-t>", function()
+k("n", "<leader>11", function()
 	local time = os.time()
 	local ftime = os.date("%H:%M", time)
 	vim.api.nvim_put({ ftime }, "c", true, true)

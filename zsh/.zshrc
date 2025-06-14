@@ -16,12 +16,11 @@ zstyle ':completion:*' squeeze-slashes false # explicit disable to allow /*/ exp
 setopt append_history inc_append_history share_history # better history
 setopt auto_menu menu_complete # autcmp first menu match
 setopt auto_param_slash # when a dir is completed, add a / instead of a trailing space
-# setopt no_case_glob no_case_match # make cmp case insensitive
 setopt globdots # include dotfiles
 setopt extended_glob # match ~ # ^
 setopt interactive_comments # allow comments in shell
 setopt prompt_subst
-unsetopt prompt_sp # don't autoclean blanklines
+# unsetopt prompt_sp # don't autoclean blanklines
 stty stop undef # disable accidental ctrl s
 
 # history opts
@@ -46,11 +45,11 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr '+'
 zstyle ':vcs_info:git:*' unstagedstr '!'
-zstyle ':vcs_info:git:*' formats 'git:(%b)%u%c'
-zstyle ':vcs_info:git:*' actionformats 'git:(%b)%u%c'
+zstyle ':vcs_info:git:*' formats 'git:(%b)%u%c '
+zstyle ':vcs_info:git:*' actionformats 'git:(%b)%u%c '
 precmd() { vcs_info }
 setopt prompt_subst
 PROMPT='%F{blue}jian%f %F{cyan}%~%f %F{yellow}${vcs_info_msg_0_}%f%f%# '
 
 
-source $PREFIX/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

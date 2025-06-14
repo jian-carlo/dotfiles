@@ -10,6 +10,7 @@ local builtin = require("telescope.builtin")
 local sorters = require("telescope.sorters")
 local job = require("plenary.job")
 local path = require("plenary.path")
+local wiki = "~/personal/wiki"
 
 local function task_entry_maker(line)
 	local f, l, c, t = line:match("([^:]+):(%d+):(%d+):(.*)")
@@ -40,11 +41,11 @@ local function incomplete_tasks()
 	pickers
 		.new({
 			prompt_title = "Completed Tasks",
-			cwd = vim.fn.getcwd(),
+			cwd = wiki,
 			previewer = previewers.vim_buffer_vimgrep.new({}),
 		}, {
 			finder = finders.new_oneshot_job({ "rg", "--vimgrep", "\\[x\\]" }, {
-				cwd = vim.fn.getcwd(),
+				cwd = wiki,
 				use_regex = true,
 				entry_maker = task_entry_maker,
 			}),
@@ -68,11 +69,11 @@ local function completed_tasks()
 	pickers
 		.new({
 			prompt_title = "Completed Tasks",
-			cwd = vim.fn.getcwd(),
+			cwd = wiki,
 			previewer = previewers.vim_buffer_vimgrep.new({}),
 		}, {
 			finder = finders.new_oneshot_job({ "rg", "--vimgrep", "\\[\\s\\]" }, {
-				cwd = vim.fn.getcwd(),
+				cwd = wiki,
 				use_regex = true,
 				entry_maker = task_entry_maker,
 			}),
@@ -175,7 +176,7 @@ local function open_file_picker_with_buffer_preview(files, cwd)
 			attach_mappings = function(prompt_bufnr, map)
 				actions.select_default:replace(function()
 					actions.close(prompt_bufnr)
-					local sel = action_state.get_selected_entry()
+					local sel = state.get_selected_entry()
 					vim.cmd("edit " .. sel.value)
 				end)
 				return true
