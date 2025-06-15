@@ -44,7 +44,7 @@ bindkey -s "^f" "tmux-sessionizer.sh\n"
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats '%b%m%u%c '
+zstyle ':vcs_info:git:*' formats 'git:(%b)%m%u%c '
 zstyle ':vcs_info:git:*' stagedstr '+'
 zstyle ':vcs_info:git:*' unstagedstr '!'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked

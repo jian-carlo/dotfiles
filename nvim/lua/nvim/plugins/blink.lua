@@ -1,5 +1,8 @@
 return {
 	"saghen/blink.cmp",
+	dependencies = {
+		"moyiz/blink-emoji.nvim",
+	},
 	version = "1.*",
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
@@ -50,7 +53,15 @@ return {
 			},
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer", "emoji" },
+			providers = {
+				emoji = {
+					module = "blink-emoji",
+					name = "Emoji",
+					min_keyword_length = 2,
+					opts = { insert = true },
+				},
+			},
 		},
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 		snippets = { preset = "luasnip" },
