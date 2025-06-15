@@ -1,17 +1,8 @@
-local palette = {
-	bright_red = "#fb4934",
-	bright_green = "#b8bb26",
-	bright_yellow = "#fabd2f",
-	bright_blue = "#83a598",
-	bright_purple = "#d3869b",
-	bright_aqua = "#8ec07c",
-	bright_orange = "#fe8019",
-}
-
 return {
 	"ellisonleao/gruvbox.nvim",
 	priority = 1000,
 	config = function()
+		local palette = require("gruvbox").palette
 		require("gruvbox").setup({
 			terminal_colors = true, -- add neovim terminal colors
 			undercurl = true,
@@ -50,6 +41,33 @@ return {
 				["@markup.heading.4.markdown"] = { fg = palette.bright_yellow },
 				["@markup.heading.5.markdown"] = { fg = palette.bright_orange },
 				["@markup.heading.6.markdown"] = { fg = palette.bright_aqua },
+				texCmdPart = { fg = palette.bright_purple, bold = true },
+				texPartArgTitle = { fg = palette.bright_purple, bold = true },
+				texDelim = { fg = palette.gray },
+				texCmdEnv = { fg = palette.bright_orange },
+				texEnvArgName = { fg = palette.bright_orange },
+				texSpecialChar = { fg = palette.gray },
+				texCmdSI = { fg = palette.gray },
+				texSICmd = { fg = nil },
+				texMathCmd = { fg = palette.bright_blue },
+				texMathArg = { fg = palette.bright_blue },
+				texCmdMathEnv = { fg = palette.bright_green },
+				texMathEnvArgName = { fg = palette.bright_green },
+				texMathDelim = { fg = palette.gray },
+				texMathOper = { fg = palette.bright_blue },
+				texMathSymbol = { fg = palette.bright_blue },
+				texMathZoneEnv = { fg = palette.bright_blue },
+				texMathGroup = { fg = palette.bright_blue },
+				texMathSub = { fg = palette.bright_blue },
+				texMathZoneLI = { fg = palette.bright_blue },
+				texOptEqual = { fg = palette.bright_blue },
+				texMathZoneTI = { fg = palette.bright_blue },
+				texCmdEnvM = { fg = palette.bright_green },
+				texCmd = { fg = palette.bright_blue },
+				texRefArg = { fg = palette.bright_purple },
+				texCmdRef = { fg = palette.bright_purple },
+				texFileArg = { fg = palette.bright_purple },
+				texTabularChar = { fg = palette.gray },
 			},
 			dim_inactive = false,
 			transparent_mode = true,

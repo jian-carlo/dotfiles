@@ -19,6 +19,7 @@ o.fillchars = {
 }
 o.foldenable = true
 o.foldlevelstart = 99
+o.foldlevel = 1
 o.foldmarker = "{{{,}}}"
 o.foldmethod = "marker"
 o.foldminlines = 0
@@ -31,7 +32,7 @@ o.mouse = ""
 g.netrw_keepdir = 1
 g.netrw_banner = 0
 g.netrw_liststyle = 0
-g.netrw_list_hide = 1
+g.netrw_list_hide = 0
 o.number = true
 o.path:append("**")
 o.pumblend = 0
@@ -65,6 +66,7 @@ o.wrap = false
 
 -- {{{ keymaps
 g.mapleader = " "
+g.maplocalleader = "\\"
 k("n", "<leader>f", "<cmd>Ex<CR>", opts("open netrw"))
 
 k("v", "<leader>y", '"+y', opts("yank in + register"))
@@ -88,15 +90,17 @@ end, { remap = false, expr = true })
 
 k("n", "<esc>", "<cmd>nohl<cr>", opts("erase search highlights"))
 
-k("n", "<leader>9", "<cmd>Ex $XDG_CONFIG_HOME/nvim/snippets<CR>", opts("open snippets directory"))
+k("n", "<leader>7", "<cmd>Ex $XDG_DATA_HOME/nvim/lazy/<CR>", opts("open data directory"))
+k("n", "<leader>8", "<cmd>Ex $XDG_CONFIG_HOME/nvim/snippets<CR>", opts("open snippets directory"))
+k("n", "<leader>9", "<cmd>Ex $HOME/personal<CR>", opts("open config directory"))
 k("n", "<leader>0", "<cmd>Ex $XDG_CONFIG_HOME/nvim<CR>", opts("open config directory"))
 
-k("n", "<leader>dt", function()
+k("i", "<localleader>d", function()
 	local date = os.date("%Y-%m-%d %A")
 	vim.api.nvim_put({ date }, "c", true, true)
 end, opts("date today"))
 
-k("n", "<leader>tn", function()
+k("i", "<localleader>t", function()
 	local time = os.time()
 	local ftime = os.date("%H:%M", time)
 	vim.api.nvim_put({ ftime }, "c", true, true)

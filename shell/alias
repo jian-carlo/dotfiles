@@ -15,3 +15,4 @@ gf='git fetch' \
 gs='git status' \
 gl='git log --pretty=format:"%h %ad   %s" --date=short | grep -Ev "modified:|deleted:|new file:" | less -S' \
 zsrc='source $HOME/.config/zsh/.zshrc' \
+xfce='bash startxfce4_termux.sh' \

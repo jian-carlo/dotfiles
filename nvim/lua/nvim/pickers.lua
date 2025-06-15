@@ -40,6 +40,34 @@ end
 local function incomplete_tasks()
 	pickers
 		.new({
+			prompt_title = "TODO",
+			cwd = wiki,
+			previewer = previewers.vim_buffer_vimgrep.new({}),
+		}, {
+			finder = finders.new_oneshot_job({ "rg", "--vimgrep", "\\[ \\]" }, {
+				cwd = wiki,
+				use_regex = true,
+				entry_maker = task_entry_maker,
+			}),
+			sorter = conf.generic_sorter({}),
+			attach_mappings = function(_, map)
+				actions.select_default:replace(function(bufnr)
+					actions.close(bufnr)
+					local sel = state.get_selected_entry()
+					if sel then
+						vim.cmd(string.format("edit +%d %s", sel.lnum, sel.filename))
+						vim.api.nvim_win_set_cursor(0, { sel.lnum, sel.col })
+					end
+				end)
+				return true
+			end,
+		})
+		:find()
+end
+
+local function completed_tasks()
+	pickers
+		.new({
 			prompt_title = "Completed Tasks",
 			cwd = wiki,
 			previewer = previewers.vim_buffer_vimgrep.new({}),
@@ -56,35 +84,7 @@ local function incomplete_tasks()
 					local sel = state.get_selected_entry()
 					if sel then
 						vim.cmd(string.format("edit +%d %s", sel.lnum, sel.filename))
-						vim.api.nvim_win_set_cursor(0, { sel.lnum, sel.col - 1 })
-					end
-				end)
-				return true
-			end,
-		})
-		:find()
-end
-
-local function completed_tasks()
-	pickers
-		.new({
-			prompt_title = "Completed Tasks",
-			cwd = wiki,
-			previewer = previewers.vim_buffer_vimgrep.new({}),
-		}, {
-			finder = finders.new_oneshot_job({ "rg", "--vimgrep", "\\[\\s\\]" }, {
-				cwd = wiki,
-				use_regex = true,
-				entry_maker = task_entry_maker,
-			}),
-			sorter = conf.generic_sorter({}),
-			attach_mappings = function(_, map)
-				actions.select_default:replace(function(bufnr)
-					actions.close(bufnr)
-					local sel = state.get_selected_entry()
-					if sel then
-						vim.cmd(string.format("edit +%d %s", sel.lnum, sel.filename))
-						vim.api.nvim_win_set_cursor(0, { sel.lnum, sel.col - 1 })
+						vim.api.nvim_win_set_cursor(0, { sel.lnum, sel.col })
 					end
 				end)
 				return true
