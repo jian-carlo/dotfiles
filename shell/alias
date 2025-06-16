@@ -16,3 +16,4 @@ gs='git status' \
 gl='git log --pretty=format:"%h %ad   %s" --date=short | grep -Ev "modified:|deleted:|new file:" | less -S' \
 zsrc='source $HOME/.config/zsh/.zshrc' \
 sumatrapdf='sumatrapdf.exe' \
+wk='nvim +WikiIndex' \

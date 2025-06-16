@@ -69,8 +69,8 @@ g.mapleader = " "
 g.maplocalleader = "\\"
 k("n", "<leader>f", "<cmd>Ex<CR>", opts("open netrw"))
 
-k("n", "<leader>y", [["+y]], opts("yank in + register"))
-k("n", "<leader>p", [["+p]], opts("put in + register"))
+k({ "n", "v" }, "<leader>y", [["+y]], opts("yank in + register"))
+k({ "n", "v" }, "<leader>p", [["+p]], opts("put in + register"))
 
 k("n", "J", "mzJ`z", opts("keep cursor position when joining"))
 k("n", "<c-d>", "<c-d>zz", opts("center when scrolling"))

@@ -3,35 +3,41 @@ return {
 	event = "VimEnter",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		-- {
-		-- 	"nvim-telescope/telescope-fzf-native.nvim",
-		-- 	build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
-		-- },
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+		},
 		{ "nvim-telescope/telescope-ui-select.nvim" },
 	},
 	config = function()
+		require("telescope").load_extension("fzf")
 		local telescope = require("telescope")
 		local builtin = require("telescope.builtin")
 		local k = vim.keymap.set
 		telescope.setup({
-			pickers = {
-				find_files = { theme = nil, hidden = true },
-				live_grep = { theme = nil },
-				buffers = { theme = nil },
-				help_tags = { theme = nil },
-				resume = { theme = nil },
-				oldfiles = { theme = nil },
-				quickfix = { theme = nil },
-				builtin = { theme = nil },
+			defaults = {
+				vimgrep_arguments = {
+					"rg",
+					"--color=never",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+					"--smart-case",
+					"--hidden",
+				},
 			},
-			-- extensions = {
-			-- 	fzf = {
-			-- 		fuzzy = true,
-			-- 		override_generic_sorter = true,
-			-- 		override_file_sorter = true,
-			-- 		case_mode = "smart_case",
-			-- 	},
-			-- },
+			pickers = {
+				find_files = { hidden = true },
+			},
+			extensions = {
+				fzf = {
+					fuzzy = true,
+					override_generic_sorter = true,
+					override_file_sorter = true,
+					case_mode = "smart_case",
+				},
+			},
 		})
 		k("n", "<leader>sf", ":Telescope find_files<CR>")
 		k("n", "<leader>sg", ":Telescope live_grep<CR>")
@@ -44,6 +50,5 @@ return {
 		k("n", "<leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
 		end, { desc = "[S]earch [N]eovim files" })
-		-- require("telescope").load_extension("fzf")
 	end,
 }

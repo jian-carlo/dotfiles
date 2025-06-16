@@ -1,7 +1,8 @@
-local themes = require("telescope.themes")
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local conf = require("telescope.config").values
+
+local themes = require("telescope.themes")
 local previewers = require("telescope.previewers")
 local actions = require("telescope.actions")
 local state = require("telescope.actions.state")
@@ -10,6 +11,7 @@ local builtin = require("telescope.builtin")
 local sorters = require("telescope.sorters")
 local job = require("plenary.job")
 local path = require("plenary.path")
+local wiki = "$HOME/personal/wiki"
 
 local function task_entry_maker(line)
 	local f, l, c, t = line:match("([^:]+):(%d+):(%d+):(.*)")
@@ -36,7 +38,7 @@ local function task_entry_maker(line)
 	}
 end
 
-local function incomplete_tasks()
+local function tasks_completed()
 	pickers
 		.new({
 			prompt_title = "Completed Tasks",
@@ -44,7 +46,6 @@ local function incomplete_tasks()
 			previewer = previewers.vim_buffer_vimgrep.new({}),
 		}, {
 			finder = finders.new_oneshot_job({ "rg", "--vimgrep", "\\[x\\]" }, {
-				cwd = vim.fn.getcwd(),
 				use_regex = true,
 				entry_maker = task_entry_maker,
 			}),
@@ -64,7 +65,7 @@ local function incomplete_tasks()
 		:find()
 end
 
-local function completed_tasks()
+local function tasks_incomplete()
 	pickers
 		.new({
 			prompt_title = "Completed Tasks",
@@ -95,7 +96,7 @@ end
 local function wiki_files()
 	builtin.find_files({
 		prompt_title = "Search Wiki",
-		cwd = "~/personal/wiki",
+		cwd = wiki,
 		hidden = false,
 		no_ignore = false,
 		file_ignore_patterns = { "^journal/", "index" },
@@ -161,14 +162,17 @@ local function open_file_picker_with_buffer_preview(files, cwd)
 						vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, { "Invalid file path!" })
 						return
 					end
+
 					-- Read file contents
 					local lines = vim.fn.readfile(entry.value)
 					vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, lines)
 
 					-- Extract and set filetype based on extension
 					local file_extension = entry.value:match("^.+%.([a-zA-Z0-9]+)$")
-					local filetype = file_extension or "" -- Fallback if no extension
-					vim.api.nvim_buf_set_option(self.state.bufnr, "filetype", filetype)
+					if file_extension then
+						local filetype = vim.filetype.match({ filename = entry.value }) or file_extension
+						vim.api.nvim_buf_set_option(self.state.bufnr, "filetype", filetype)
+					end
 				end,
 			}),
 			sorter = conf.generic_sorter({}),
@@ -213,12 +217,16 @@ end
 -------------------------------------------------------------------------
 -------------------------------------------------------------------------
 
-vim.keymap.set("n", "<leader>tc", function()
-	incomplete_tasks()
+vim.keymap.set("n", "<leader>``", function()
+	local curdir = vim.fn.getcwd()
+	vim.cmd("cd $HOME/personal/wiki")
+	tasks_incomplete()
 end, { desc = "search completed tasks" })
 
-vim.keymap.set("n", "<leader>tt", function()
-	completed_tasks()
+vim.keymap.set("n", "<leader><tab><tab>", function()
+	local curdir = vim.fn.getcwd()
+	vim.cmd("cd $HOME/personal/wiki")
+	tasks_completed()
 end, { desc = "search incomplete tasks" })
 
 vim.keymap.set("n", "<leader>wf", function()
