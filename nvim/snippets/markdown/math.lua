@@ -54,6 +54,8 @@ return {
 			trig = "([^%a])ff",
 			snippetType = "autosnippet",
 			condition = math,
+			regTrig = true,
+			wordTrig = false,
 		},
 		fmta(
 			[[
@@ -82,6 +84,78 @@ return {
 			{
 				i(1),
 				rep(1),
+			}
+		)
+	),
+	s(
+		{
+			trig = "**",
+			snippetType = "autosnippet",
+			condition = math,
+		},
+		fmta(
+			[[
+        \cdot
+      ]],
+			{
+				-- nodes
+			}
+		)
+	),
+	s(
+		{
+			trig = "xx",
+			snippetType = "autosnippet",
+			condition = math,
+		},
+		fmta(
+			[[
+        \times
+      ]],
+			{
+				-- nodes
+			}
+		)
+	),
+	s(
+		{
+			trig = "([%d])e",
+			snippetType = "autosnippet",
+			condition = math,
+			wordTrig = false,
+			regTrig = true,
+		},
+		fmta(
+			[[
+        <>\times 10^{<>}<>
+      ]],
+			{
+				f(function(_, snip)
+					return snip.captures[1]
+				end),
+				i(1),
+				i(0),
+			}
+		)
+	),
+	s(
+		{
+			trig = "([%d}])pu",
+			snippetType = "autosnippet",
+			condition = math,
+			regTrig = true,
+			wordTrig = false,
+		},
+		fmta(
+			[[
+        <>~\pu{<>}<>
+      ]],
+			{
+				f(function(_, snip)
+					return snip.captures[1]
+				end),
+				i(1),
+				i(0),
 			}
 		)
 	),
