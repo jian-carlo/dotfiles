@@ -6,7 +6,8 @@ q=exit \
 l="ls -lh --color=auto --group-directories-first" \
 ls="ls -h --color=auto --group-directories-first" \
 la="ls -lah --color=auto --group-directories-first" \
-vf='nvim $(fzf)' \
+vf='selected=$(fzf); [ -n "$selected" ] && nvim "$selected"' \
+df='open-document.sh' \
 gc='git commit' \
 ga='git add' \
 gp='git push' \
@@ -15,5 +16,8 @@ gf='git fetch' \
 gs='git status' \
 gl='git log --pretty=format:"%h %ad   %s" --date=short | grep -Ev "modified:|deleted:|new file:" | less -S' \
 zsrc='source $HOME/.config/zsh/.zshrc' \
-sumatrapdf='sumatrapdf.exe' \
 wk='nvim +WikiIndex' \
+wj='nvim +WikiJournal' \
+mv='mv -iv' \
+cp='cp -iv' \
+rm='rm' \

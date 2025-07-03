@@ -64,4 +64,13 @@ return {
 		-- |<plug>(lists-al)|                    al              `ox`
 		-- |<plug>(lists-il)|                    il              `ox`
 	},
+	{
+		"qadzek/link.vim",
+		config = function()
+			vim.cmd("let g:link_enabled_filetypes = [ 'markdown' ]")
+			vim.keymap.set("n", "<localleader>cl", "<cmd>LinkConvertSingle<CR>", opts("convert link single"))
+			vim.keymap.set("n", "<localleader>ca", "<cmd>LinkConvertAll<CR>", opts("convert link all"))
+			vim.keymap.set("n", "<localleader>cj", "<cmd>LinkJump<CR>", opts("jump to link"))
+		end,
+	},
 }

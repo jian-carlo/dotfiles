@@ -61,6 +61,11 @@ return {
 					min_keyword_length = 2,
 					opts = { insert = true },
 				},
+				cmdline = {
+					enabled = function()
+						return vim.fn.getcmdline():sub(1, 1) ~= "!"
+					end,
+				},
 			},
 		},
 		fuzzy = { implementation = "prefer_rust_with_warning" },

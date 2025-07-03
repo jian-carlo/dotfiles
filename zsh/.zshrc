@@ -39,6 +39,7 @@ bindkey "^N" history-search-forward
 bindkey "^P" history-search-backward
 bindkey "^R" fzf-history-widget
 bindkey -s "^f" "tmux-sessionizer.sh\n"
+bindkey -s "^p" "fzf-pdfs.sh\n"
 
 # prompt with git info
 autoload -Uz vcs_info

@@ -1,3 +1,17 @@
+local function math()
+	-- get the 1-based cursor row,col
+	local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+	-- synstack returns a list of IDs for all syntax groups at row,col
+	local syn_ids = vim.fn.synstack(row, col)
+	for _, id in ipairs(syn_ids) do
+		local name = vim.fn.synIDattr(id, "name")
+		if name == "markdownInlineMath" or name == "markdownBlockMath" then
+			return true
+		end
+	end
+	return false
+end
+
 local get_visual = function(args, parent)
 	if #parent.snippet.env.LS_SELECT_RAW > 0 then
 		return sn(nil, i(1, parent.snippet.env.LS_SELECT_RAW))
@@ -39,8 +53,8 @@ return {
   s(
     {
       trig = "ff",
-      snippetType = "snippet",
-      condition = nil,
+      snippetType = "autosnippet",
+      condition = math,
       wordTrig = true
     },
     fmta(
@@ -56,7 +70,7 @@ return {
   s(
     {
       trig = "dm",
-      snippetType = "snippet",
+      snippetType = "autosnippet",
       condition = line_begin,
       wordTrig = true
     },
@@ -74,8 +88,8 @@ return {
   s(
     {
       trig = "beg",
-      snippetType = "snippet",
-      condition = line_begin,
+      snippetType = "autosnippet",
+      condition = math,
       wordTrig = true
     },
     fmta(
@@ -91,8 +105,23 @@ return {
   ),
   s(
     {
+      trig = "pu",
+      snippetType = "autosnippet",
+      condition = math,
+    },
+    fmta(
+      [[
+        ~\pu{<>}
+      ]],
+      {
+        i(1)
+      }
+    )
+  ),
+  s(
+    {
       trig = "mk",
-      snippetType = "snippet",
+      snippetType = "autosnippet",
       condition = nil,
       wordTrig = true
     },
@@ -155,7 +184,7 @@ return {
     {
       trig = "```",
       snippetType = "autosnippet",
-      condition = nil,
+      condition = line_begin,
     },
     fmta(
       [[
@@ -164,6 +193,41 @@ return {
       ]],
       {
         i(1, "lang")
+      }
+    )
+  ),
+  s(
+    {
+      trig = "t",
+      snippetType = "snippet",
+      condition = nil,
+    },
+    fmta(
+      [[
+        ## <>
+      ]],
+      {
+        f(function ()
+          local time = os.time()
+          return os.date("%H:%M", time)
+        end)
+      }
+    )
+  ),
+  s(
+    {
+      trig = "d",
+      snippetType = "snippet",
+      condition = nil,
+    },
+    fmta(
+      [[
+        # <>
+      ]],
+      {
+        f(function ()
+          return os.date("%Y-%m-%d %A")
+        end)
       }
     )
   ),

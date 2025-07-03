@@ -159,5 +159,20 @@ return {
       }
     )
   ),
+  s(
+    {
+      trig = '"',
+      snippetType = "autosnippet",
+      condition = math,
+    },
+    fmta(
+      [[
+        \text{<>}
+      ]],
+      {
+        i(1)
+      }
+    )
+  ),
 }
 -- stylua: ignore end

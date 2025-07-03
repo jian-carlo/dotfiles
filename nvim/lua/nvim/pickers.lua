@@ -214,18 +214,18 @@ function create_tag_picker(directory)
 		:find()
 end
 
--------------------------------------------------------------------------
--------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 
-vim.keymap.set("n", "<leader>``", function()
+vim.keymap.set("n", "<leader>qw", function()
 	local curdir = vim.fn.getcwd()
-	vim.cmd("cd $HOME/personal/wiki")
+	vim.cmd("cd $HOME/personal/wiki/journal")
 	tasks_incomplete()
 end, { desc = "search completed tasks" })
 
-vim.keymap.set("n", "<leader><tab><tab>", function()
+vim.keymap.set("n", "<leader>qq", function()
 	local curdir = vim.fn.getcwd()
-	vim.cmd("cd $HOME/personal/wiki")
+	vim.cmd("cd $HOME/personal/wiki/journal")
 	tasks_completed()
 end, { desc = "search incomplete tasks" })
 

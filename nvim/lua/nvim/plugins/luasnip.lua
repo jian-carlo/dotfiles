@@ -13,7 +13,7 @@ return {
 
 		require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/snippets" } })
 
-		vim.keymap.set({ "i" }, "<C-h>", function()
+		vim.keymap.set({ "i" }, "<C-l>", function()
 			ls.expand()
 		end, { noremap = true, silent = true, desc = "expand snippet" })
 		vim.keymap.set({ "i", "s" }, "<C-j>", function()

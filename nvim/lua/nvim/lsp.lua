@@ -1,4 +1,4 @@
-vim.lsp.enable({"texlab", "pyright", "luals"})
+vim.lsp.enable({ "texlab", "pyright", "luals", "tinymist" })
 
 --diagnostics-- diagnostics
 vim.keymap.set("n", "<leader>k", function()
