@@ -1,6 +1,6 @@
 # Install
 ```bash
-yes | pacman -S neovim tmux fzf ripgrep stow git openssh rust python3 ipython sudo pandoc zsh
+yes | pacman -S neovim tmux fzf ripgrep stow git openssh rust python3 ipython sudo pandoc zsh make
 ```
 # Stow
 ```bash
