@@ -130,8 +130,7 @@ k("n", "<leader>`", function()
 	else
 		-- Open Netrw in a split and resize it, silently handle errors
 		pcall(function()
-			vim.cmd("let g:netrw_liststyle = 0")
-			vim.cmd("S! | vertical resize 70 | wincmd p")
+			vim.cmd("S! | vertical resize 50 | wincmd p")
 		end)
 	end
 end, opts("toggle center current buffer"))

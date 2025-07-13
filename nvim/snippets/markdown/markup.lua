@@ -1,7 +1,7 @@
 return {
 	s(
 		{
-			trig = "([^%a])img",
+			trig = "([^%a]?)img",
 			snippetType = "snippet",
 			condition = nil,
 			regTrig = true,
@@ -9,9 +9,12 @@ return {
 		},
 		fmta(
 			[[
-        ![<>](<>)<>
+        <>![<>](<>)<>
       ]],
 			{
+				f(function(_, snip)
+					return snip.captures[1] or ""
+				end),
 				i(1, "cap"),
 				i(2, "link"),
 				i(3),
@@ -20,7 +23,7 @@ return {
 	),
 	s(
 		{
-			trig = "([^%a])link",
+			trig = "([^%a]?)link",
 			snippetType = "autosnippet",
 			condition = nil,
 			regTrig = true,
@@ -28,9 +31,12 @@ return {
 		},
 		fmta(
 			[[
-        [<>][<>]<>
+        <>[<>][<>]<>
       ]],
 			{
+				f(function(_, snip)
+					return snip.captures[1]
+				end),
 				i(1, "cap"),
 				i(2, "link"),
 				i(3),

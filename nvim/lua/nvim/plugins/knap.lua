@@ -23,7 +23,13 @@ return {
 		end)
 
 		local mdtopdf_command = "pandoc -F pandoc-crossref %docroot% -o ./.pdf/%outputfile%"
-		local mdtohtml_command = "pandoc -F pandoc-crossref --standalone %docroot% -o ./.html/%outputfile% --mathjax"
+		local mdtohtml_command = [[pandoc -F pandoc-crossref \
+		             --standalone %docroot% \
+		             -o ./.html/%outputfile% \
+		             -M eqnPrefix='Eq' \
+		             --mathjax \
+		             --toc \
+		             ]]
 
 		_G.current_format = "html"
 

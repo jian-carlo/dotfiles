@@ -51,6 +51,7 @@ return {
 				end,
 			})
 			vim.keymap.set("n", "<c-x>", ":ListsToggleCheckbox<CR>", opts("toggle checkbox"))
+			vim.keymap.set({ "i", "n", "v" }, "<c-z>", "<Plug>(lists-new-element)", opts("new element lists"))
 		end,
 		-- |<plug>(lists-toggle)|                <c-s>           `in`
 		-- |<plug>(lists-toggle-checkbox)|       NONE            `in`
