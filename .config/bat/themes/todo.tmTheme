@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>name</key>
+    <string>Todo</string>
+    <key>settings</key>
+    <array>
+        <!-- Default text -->
+        <dict>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#CDCDCD</string>
+                <key>background</key>
+                <string>#1E1E1E</string>
+            </dict>
+        </dict>
+
+        <!-- Done items -->
+        <dict>
+            <key>name</key>
+            <string>Done</string>
+            <key>scope</key>
+            <string>todo.done</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#606079</string>
+            </dict>
+        </dict>
+
+        <!-- Due date components -->
+        <dict>
+            <key>name</key>
+            <string>Due Keyword</string>
+            <key>scope</key>
+            <string>todo.due.keyword</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#C48282</string>
+            </dict>
+        </dict>
+
+        <dict>
+            <key>name</key>
+            <string>Due Date</string>
+            <key>scope</key>
+            <string>todo.due.date</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#E8B589</string>
+            </dict>
+        </dict>
+
+        <!-- Priority markers with distinct colors -->
+        <dict>
+            <key>name</key>
+            <string>Priority A</string>
+            <key>scope</key>
+            <string>todo.priority.A</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#B58452</string>
+            </dict>
+        </dict>
+
+        <dict>
+            <key>name</key>
+            <string>Priority B</string>
+            <key>scope</key>
+            <string>todo.priority.B</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#A26D6D</string>
+            </dict>
+        </dict>
+
+        <dict>
+            <key>name</key>
+            <string>Priority C</string>
+            <key>scope</key>
+            <string>todo.priority.C</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#6E94B2</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>

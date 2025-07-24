@@ -1,0 +1,7 @@
+[user]
+    email = jiancarlo0526@gmail.com
+    name = jian
+[init]
+	defaultBranch = master
+[core]
+	editor = nvim
