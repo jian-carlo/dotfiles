@@ -34,14 +34,14 @@ return {
         },
         fmta(
             [[
-      [ ] (<>) -<> <> due:<><>
+      [ ] due:<><> (<>) -<> <>
     ]],
             {
-                c(1, { t("C"), t("B"), t("A") }),
-                f(get_predefined_text),
-                i(2, "todo"),
                 f(get_today_date),
                 i(0),
+                c(1, { t("C"), t("B"), t("A") }),
+                f(get_predefined_text),
+                i(2),
             }
         )
     ),

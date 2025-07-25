@@ -21,6 +21,7 @@ alias docf="search-pdfs.sh"
 # alias cht="cheat.sh"
 
 export EDITOR="nvim"
+export BROWSER="thorium.exe"
 export MANPAGER="nvim +Man!"
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -39,7 +40,7 @@ export PATH="$PATH:/mnt/c/Users/JC/Main/files/thorium/BIN"
 export PATH="$PATH:/mnt/c/Users/JC/AppData/Local/SumatraPDF"
 export PATH="$PATH:/mnt/c/Program Files/Mozilla Firefox"
 
-todo.sh
-
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+bind '"\C-f": "tmux-sessionizer.sh\n"'

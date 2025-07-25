@@ -16,16 +16,32 @@ _G.black_and_white = 0
 o.nu = true
 o.rnu = true
 o.ruler = false
-o.laststatus = 0
+vim.cmd([[
+set laststatus=0
+set statusline=%{repeat('─',winwidth('.'))}
+]])
 o.colorcolumn = '80'
 o.termguicolors = true
 o.wrap = false
+o.pumheight = 5
+o.cursorline = true
+o.fillchars = {fold = " ", foldsep = " "}
+
+-- search
+o.incsearch = true
+o.path:append("**")
+o.smartcase = false
 
 -- clipboard
 g.clipboard = "win32yank"
 
 -- splits
 o.splitbelow = true
+o.splitright = true
+k("n", "<c-h>", "<c-w>h", d("remap the change window focus keys"))
+k("n", "<c-j>", "<c-w>j", d("remap the change window focus keys"))
+k("n", "<c-k>", "<c-w>k", d("remap the change window focus keys"))
+k("n", "<c-l>", "<c-w>l", d("remap the change window focus keys"))
 
 -- indentation
 o.tabstop = 4
@@ -43,38 +59,40 @@ o.swapfile = false
 
 -- scroll
 o.scrolloff = 10
-o.sidescrolloff = 10
+o.sidescrolloff = 1
 
 -- netrw
 g.netrw_keepdir = 1 
 g.netrw_banner = 0
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "netrw",
-  callback = function()
-    local a = function(desc)
-      return { buffer = true, remap = true, desc = desc}
+    pattern = "netrw",
+    callback = function()
+        local a = function(desc)
+            return { buffer = true, remap = true, desc = desc}
+        end
+        vim.keymap.set("n", "h", "-", a("up one directory"))
+        vim.keymap.set("n", "l", "<CR>", a("goto file/dir"))
+        vim.keymap.set("n", "o", open_in_explorer, a("open explorer from netrw"))
     end
-    vim.keymap.set("n", "h", "-", a("up one directory"))
-    vim.keymap.set("n", "l", "<CR>", a("goto file/dir"))
-    vim.keymap.set("n", "o", open_in_explorer, a("open explorer from netrw"))
-  end
 })
 
 -- shortcuts
 k("n", "<leader>f", "<cmd>Explore<cr>", d("open netrw"))
 k("n", "<esc>", "<cmd>nohl<cr>", d("remove search highlights"))
-k("n", "<leader>i", "<cmd>Inspect<cr>", d("inspect"))
 k("n", "<leader><F1>", light_or_dark, d("toggle light or dark bg"))
 k("n", "<leader><F2>", black_and_white, d("toggle black and white theme"))
+vim.keymap.set('n', 'gx', function()
+    local uri = vim.fn.expand('<cWORD>')
+    local cmd = {"thorium.exe", uri }
+    vim.fn.jobstart(cmd, { detach = true })
+end, d("remap gx to open <cWORD> in thorium.exe"))
 
 -- bookmarks
 k("n", "<leader>0", "<cmd>e ~/.config/nvim/init.lua<cr>", d("open nvim config"))
 k("n", "<leader>9", "<cmd>e ~/.bashrc<cr>", d("open shell config"))
 k("n", "<leader>8", "<cmd>e /mnt/c/Users/JC/Main<cr>", d("open main windows dir"))
-k("n", "<leader>j", "<cmd>Ex ~/journal<cr>", d("open journal dir"))
 k("n", "<leader>n", "<cmd>e ~/notes/index.md<cr>", d("open notes index"))
 k("n", "<leader>h", "<cmd>Ex ~<cr>", d("open $HOME in netrw"))
-k("n", "<leader>t", "<cmd>e ~/todo.txt<cr>", d("open todo.txt"))
 
 -- navigating
 k("n", "J", "mzJ`z", d("keep cursor position when joining"))
@@ -87,6 +105,14 @@ k("n", "<a-s-n>", "<cmd>bn<cr>", d("buffer next"))
 k("n", "<a-s-p>", "<cmd>bp<cr>", d("buffer previous"))
 k("n", "<a-s-n>", "<cmd>bn<cr>", d("buffer next"))
 
+-- todo
+vim.api.nvim_create_autocmd({"BufRead", "BufWritePost"}, {
+    pattern = vim.fn.expand("$HOME/todo/") .. "*.txt",
+    callback = function()
+        vim.cmd("sort")
+    end,
+})
+
 -- editing
 k("v", "J", ":m '>+1<cr>gv=gv", d("drag lines"))
 k("v", "K", ":m '<-2<cr>gv=gv", d("drag lines"))
@@ -94,19 +120,19 @@ k("v", ">", ">gv", d("keep selection when visual indenting"))
 k("v", "<", "<gv", d("keep selection when visual indenting"))
 k("i", "<c-h>", "<bs>", d("map <c-h> to <bs> in insert mode"))
 vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "highlight when yanking text",
-  callback = function()
-    vim.hl.on_yank()
-  end,
+    desc = "highlight when yanking text",
+    callback = function()
+        vim.hl.on_yank()
+    end,
 })
 vim.api.nvim_create_autocmd("ModeChanged", {
-  pattern = "*:*",
-  callback = function()
-    local mode = vim.fn.mode()
-    if mode == "n" or mode == "\22" then vim.opt.virtualedit = "all"     end
-    if mode == "i"                  then vim.opt.virtualedit = "block"   end
-    if mode == "v" or mode == "V"   then vim.opt.virtualedit = "onemore" end
-  end
+    pattern = "*:*",
+    callback = function()
+        local mode = vim.fn.mode()
+        if mode == "n" or mode == "\22" then vim.opt.virtualedit = "all"     end
+        if mode == "i"                  then vim.opt.virtualedit = "block"   end
+        if mode == "v" or mode == "V"   then vim.opt.virtualedit = "onemore" end
+    end
 })
 
 -- terminal
@@ -125,6 +151,14 @@ k("n", "<localleader>1", [[
 0i//////////////////////////////////////////////////////////////////////////////<esc>
   ]], d("comment line"))
 
+--lsp
+require("jian.lsp")
+
+-- set to wait:0 because typst-preview shows messages every few seconds
+-- if no wifi T_T
+-- o.messagesopt = { "wait:2000", "history:500" }
+
+--from this point on, plugins options
 require("jian.lazy")
 
 -- fzf-lua
@@ -141,16 +175,11 @@ k("n", "<a-k>", function() fzf.keymaps() end, d("fzf keymaps"))
 
 -- typst-preview
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "typst",
-  callback = function()
-    vim.keymap.set("n", "<localleader>p", "<cmd>silent! TypstPreviewToggle<cr>", { silent = true, desc = "typst-preview toggle"})
-  end,
+    pattern = "typst",
+    callback = function()
+        vim.keymap.set("n", "<localleader>p", "<cmd>silent! TypstPreviewToggle<cr>", { silent = true, desc = "typst-preview toggle"})
+    end,
 })
 
--- set to wait:0 because typst-preview shows messages every few seconds
--- if no wifi T_T
--- o.messagesopt = { "wait:2000", "history:500" }
-
---lsp
-require("jian.lsp")
+--syntax highlighting
 require("jian.colors")
