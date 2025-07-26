@@ -1,4 +1,4 @@
 return {
-  cmd = { "clangd", "--fallback-style=webkit" },
-  filetypes = { "c", "cpp" }, 
+    cmd = { "clangd", "--fallback-style=webkit" },
+    filetypes = { "c", "cpp" },
 }
