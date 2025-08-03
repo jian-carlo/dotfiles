@@ -1,5 +1,5 @@
 local M = {}
-local todo_file = vim.fn.expand("$HOME/todo.txt")
+local todo_file = vim.fn.expand("$HOME/.local/share/todo/todo.txt")
 
 local function filetype_setup()
     vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {

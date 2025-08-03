@@ -3,6 +3,7 @@ alias \
 v=nvim \
 vim=nvim \
 t="todo.sh" \
+remind="remindme.sh" \
 l="ls -lh --color=auto --group-directories-first" \
 ls="ls -h --color=auto --group-directories-first" \
 la="ls -lah --color=auto --group-directories-first" \
