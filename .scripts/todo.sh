@@ -1,1 +1,0 @@
-/home/jian/config/.config/nvim/lua/todotxt/todo.sh

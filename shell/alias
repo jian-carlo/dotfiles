@@ -1,0 +1,10 @@
+alias \
+\
+v=nvim \
+vim=nvim \
+t="todo.sh" \
+l="ls -lh --color=auto --group-directories-first" \
+ls="ls -h --color=auto --group-directories-first" \
+la="ls -lah --color=auto --group-directories-first" \
+vf='selected=$(fzf); [ -n "$selected" ] && nvim "$selected"' \
+zshrc='source $HOME/.config/zsh/.zshrc && echo "~/.config/zsh/.zshrc reloaded"' \

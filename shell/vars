@@ -1,0 +1,25 @@
+export PATH="/bin"
+export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/usr/sbin"
+export PATH="$PATH:/usr/bin"
+export PATH="$PATH:/sbin"
+export PATH="$PATH:/usr/games"
+export PATH="$PATH:/usr/local/games"
+
+# LOCAL
+export PATH="$PATH:$XDG_CONFIG_HOME/scripts"
+export PATH="$PATH:$XDG_DATA_HOME/bob/nightly/bin"
+export PATH="$PATH:$XDG_DATA_HOME/nvim/typst-preview"
+
+# WSL
+export PATH="$PATH:/usr/lib/wsl/lib"
+export PATH="$PATH:/mnt/c/Windows/System32"
+export PATH="$PATH:/mnt/c/Windows"
+export PATH="$PATH:/mnt/c/Users/JC/Main/files/win32yank"
+export PATH="$PATH:/mnt/c/Program Files/Thorium/Thorium_AVX_130.0.6723.174/BIN"
+export BROWSER="thorium.exe"
+
+# export TEXMFHOME="$XDG_DATA_HOME/texmf"
+
+export LANG=en_US.UTF-8
