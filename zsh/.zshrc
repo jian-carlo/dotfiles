@@ -57,9 +57,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
   fi
 }
 precmd() { vcs_info }
-PROMPT='%F{blue}${PWD/#$HOME/~}%f %F{#d0a37e}${vcs_info_msg_0_}%f%F{#9090ac}$%f '
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+PROMPT='${PWD/#$HOME/~} ${vcs_info_msg_0_}$ '
 
 # for python
 venv() {
